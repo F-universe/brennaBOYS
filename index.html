@@ -2,82 +2,121 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>I Luoghi del Fiume - Futuristic Edition</title>
+  <title>BRENNA BOYS</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300&display=swap');
 
+    /* Sfondo animato */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: #0a0f1c;
+      background: linear-gradient(270deg, #0f0c29, #302b63, #24243e);
+      background-size: 600% 600%;
+      animation: gradientBG 20s ease infinite;
       color: #e0e0e0;
+      overflow-x: hidden;
     }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
     header {
-      background: linear-gradient(90deg, #00f5d4, #00bbf9, #4361ee);
-      padding: 40px;
       text-align: center;
-      color: black;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 8px rgba(0,0,0,0.6);
+      padding: 80px 20px;
     }
     header h1 {
-      font-size: 3em;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4em;
+      color: #00f5d4;
+      text-shadow: 0 0 10px #00f5d4, 0 0 20px #00bbf9, 0 0 40px #4361ee;
+      animation: glowPulse 3s infinite alternate;
       margin: 0;
     }
+    header p {
+      font-size: 1.3em;
+      color: #90e0ef;
+      margin-top: 15px;
+      text-shadow: 0 0 10px #00f5d4;
+    }
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px #00f5d4, 0 0 20px #00bbf9; }
+      to { text-shadow: 0 0 20px #00f5d4, 0 0 40px #00bbf9, 0 0 60px #4361ee; }
+    }
+
     nav {
-      background: #111827;
+      background: rgba(0,0,0,0.6);
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 25px;
       padding: 15px;
+      border-top: 2px solid #00f5d4;
       border-bottom: 2px solid #00f5d4;
     }
     nav a {
       color: #00f5d4;
       text-decoration: none;
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.1em;
+      font-size: 1.2em;
       transition: 0.3s;
     }
     nav a:hover {
       color: #00bbf9;
-      text-shadow: 0 0 10px #00f5d4;
+      text-shadow: 0 0 10px #00f5d4, 0 0 20px #00bbf9;
     }
+
     section {
-      padding: 50px 20px;
+      padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
     }
     h2 {
       font-family: 'Orbitron', sans-serif;
       color: #00f5d4;
-      border-left: 5px solid #4361ee;
-      padding-left: 10px;
-      font-size: 1.8em;
-      margin-top: 50px;
+      font-size: 2em;
+      text-shadow: 0 0 15px #00f5d4, 0 0 30px #00bbf9;
+      margin-bottom: 15px;
     }
     .spot {
       margin-bottom: 80px;
       background: rgba(255,255,255,0.05);
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
-      transition: transform 0.3s;
+      box-shadow: 0 0 25px rgba(0, 245, 212, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 30px rgba(0, 245, 212, 0.4);
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(0, 245, 212, 0.6);
     }
     .spot img {
       display: block;
       margin: 20px auto;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 187, 249, 0.6);
+      box-shadow: 0 0 25px rgba(0, 187, 249, 0.8);
       max-width: 100%;
       height: auto;
+      transition: transform 0.5s;
     }
+    .spot img:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+    .spot p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      color: #d1f7ff;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
     footer {
-      background: #111827;
+      background: rgba(0,0,0,0.6);
       color: #00f5d4;
       text-align: center;
       padding: 20px;
@@ -89,8 +128,8 @@
 <body>
 
   <header>
-    <h1>I Luoghi del Fiume</h1>
-    <p>Un viaggio leggendario tra natura selvaggia e avventure epiche</p>
+    <h1>BRENNA BOYS</h1>
+    <p>I luoghi leggendari del fiume — tra avventura, coraggio e libertà</p>
   </header>
 
   <nav>
@@ -105,36 +144,36 @@
     <div id="salto" class="spot">
       <h2>🌊 Il Salto</h2>
       <img src="images/salto.png" alt="Foto del Salto">
-      <p>Qui l’acqua esplode in pura energia. Un luogo dove il coraggio incontra l’adrenalina: solo i più audaci osano tuffarsi da queste rocce leggendarie.</p>
+      <p>Un vortice di energia: qui l’acqua esplode in pura potenza. I più audaci si lanciano nel vuoto, abbracciando l’adrenalina come moderni guerrieri.</p>
     </div>
 
     <div id="baia" class="spot">
       <h2>🌅 La Baia di Fabio</h2>
       <img src="images/baia.png" alt="Foto della Baia di Fabio">
-      <p>Un rifugio nascosto dove il tempo sembra fermarsi. Le acque calme riflettono il cielo, creando un santuario segreto per chi cerca pace e libertà.</p>
+      <p>Un santuario segreto dove il fiume si fa quiete. Le acque brillano sotto il sole, mentre le ombre degli alberi raccontano storie di amicizia eterna.</p>
     </div>
 
     <div id="rick" class="spot">
       <h2>🌄 Il Posto di Rick</h2>
       <img src="images/rick.png" alt="Foto del Posto di Rick">
-      <p>Un panorama che si accende al tramonto: colori vivi, silenzi profondi. È qui che la natura racconta storie di avventure dimenticate.</p>
+      <p>Qui il tramonto incendia il cielo. È il luogo dove i ricordi prendono forma e il tempo si piega al silenzio dorato della natura.</p>
     </div>
 
     <div id="tank" class="spot">
       <h2>🏞️ Il Posto di Tank</h2>
       <img src="images/tank.png" alt="Foto del Posto di Tank">
-      <p>Una terra selvaggia, dominata da rocce e acque profonde. È il regno dei temerari, dove ogni onda mette alla prova la tua forza interiore.</p>
+      <p>Un regno selvaggio, scolpito da rocce e correnti profonde. Solo gli spiriti indomabili osano sfidare queste acque ribelli.</p>
     </div>
 
     <div id="liana" class="spot">
       <h2>🌿 La Liana</h2>
       <img src="images/liana.png" alt="Foto della Liana">
-      <p>Un filo naturale sospeso sull’acqua. Chi si lancia da qui vola per un istante, vivendo l’ebrezza di sfidare la gravità come un eroe.</p>
+      <p>Un filo sospeso tra cielo e acqua. Qui si vola, si urla, si ride: un istante eterno che trasforma chiunque in un eroe del fiume.</p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Fiume Chronicles ⚡ Un’avventura oltre il tempo</p>
+    <p>© 2025 BRENNA BOYS ⚡ Un’avventura oltre il tempo</p>
   </footer>
 
 </body>
