@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(270deg, #ffdd00, #ff922b, #ff6b35, #8b4513);
+      background: linear-gradient(270deg, #00c6ff, #0072ff, #009ffd, #2a2a72);
       background-size: 1000% 1000%;
       animation: gradientBG 25s ease infinite;
       color: #000000;
@@ -31,7 +31,7 @@
       bottom: 0;
       width: 200%;
       height: 200px;
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 100% 50%;
       animation: waveAnim 8s linear infinite;
       z-index: -1;
@@ -87,60 +87,49 @@
     header h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 4em;
-      color: #8b0000; /* marrone-rosso */
-      text-shadow: 0 0 12px #ff922b, 0 0 25px #ffdd00;
-      animation: shake 1s ease-in-out 2, glowPulse 3s infinite alternate;
+      color: #001f54; /* blu scuro */
+      text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
+      animation: smoothWave 4s infinite ease-in-out;
       margin: 0;
       display: inline-block;
     }
     header p {
       font-size: 1.3em;
-      color: #ffe066;
+      color: #e0f7fa;
       margin-top: 15px;
-      text-shadow: 0 0 8px #ff922b;
+      text-shadow: 0 0 8px #009ffd;
     }
 
-    /* Oscillazione frenetica */
-    @keyframes shake {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      10% { transform: translate(-5px, 0) rotate(-5deg); }
-      20% { transform: translate(5px, 0) rotate(5deg); }
-      30% { transform: translate(-5px, 0) rotate(-5deg); }
-      40% { transform: translate(5px, 0) rotate(5deg); }
-      50% { transform: translate(-3px, 0) rotate(-3deg); }
-      60% { transform: translate(3px, 0) rotate(3deg); }
-      70% { transform: translate(-2px, 0) rotate(-2deg); }
-      80% { transform: translate(2px, 0) rotate(2deg); }
-      90% { transform: translate(-1px, 0) rotate(-1deg); }
-      100% { transform: translate(0, 0) rotate(0deg); }
-    }
-
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff922b; }
-      to { text-shadow: 0 0 20px #ffdd00, 0 0 40px #ff922b; }
+    /* Movimento smooth */
+    @keyframes smoothWave {
+      0% { transform: translateY(0); }
+      25% { transform: translateY(-10px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
     }
 
     nav {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,50,0.6);
       display: flex;
       justify-content: center;
       gap: 25px;
       padding: 15px;
-      border-top: 2px solid #ffe066;
-      border-bottom: 2px solid #ffe066;
+      border-top: 2px solid #00c6ff;
+      border-bottom: 2px solid #00c6ff;
       position: relative;
       z-index: 2;
     }
     nav a {
-      color: #ffdd00;
+      color: #00eaff;
       text-decoration: none;
       font-family: 'Orbitron', sans-serif;
       font-size: 1.2em;
       transition: 0.3s;
     }
     nav a:hover {
-      color: #ff6b35;
-      text-shadow: 0 0 15px #ff922b, 0 0 25px #ffdd00;
+      color: #fff;
+      text-shadow: 0 0 15px #00c6ff, 0 0 25px #0072ff;
     }
 
     section {
@@ -152,32 +141,31 @@
     }
     h2 {
       font-family: 'Orbitron', sans-serif;
-      color: #8b0000;
+      color: #001f54;
       font-size: 2em;
-      text-shadow: 0 0 15px #ff922b, 0 0 30px #ffdd00;
+      text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
       margin-bottom: 15px;
     }
     .spot {
       margin-bottom: 80px;
       background: rgba(255,255,255,0.9);
-      padding: 0;
       border-radius: 15px;
-      border: 4px solid #8b0000; /* bordo definito */
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      overflow: hidden; /* per far aderire l'immagine al box */
+      border: 4px solid #001f54; /* bordo blu scuro */
+      box-shadow: 0 0 15px rgba(0,0,50,0.4);
+      overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 30px rgba(255, 105, 0, 0.7);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
     }
     .spot img {
       display: block;
       width: 100%;
       height: 350px;
       object-fit: cover;
-      border-bottom: 4px solid #8b0000;
+      border-bottom: 4px solid #001f54;
       transition: transform 0.5s;
     }
     .spot img:hover {
@@ -196,12 +184,12 @@
     }
 
     footer {
-      background: rgba(0,0,0,0.6);
-      color: #ffe066;
+      background: rgba(0,0,50,0.6);
+      color: #00eaff;
       text-align: center;
       padding: 20px;
       font-family: 'Orbitron', sans-serif;
-      border-top: 2px solid #ff922b;
+      border-top: 2px solid #0072ff;
       position: relative;
       z-index: 2;
     }
@@ -246,7 +234,7 @@
       <a href="baia.html">
         <img src="images/baia.png" alt="Foto della Baia di Fabio">
       </a>
-      <p>Un santuario segreto dove il fiume si fa quiete. Clicca sull’immagine per entrare nel mito e scoprire le foto di questo rifugio nascosto.</p>
+      <p>Un santuario segreto dove il fiume si fa quiete. Clicca sull’immagine per scoprire le storie di questo rifugio nascosto.</p>
     </div>
 
     <div id="rick" class="spot">
@@ -283,7 +271,7 @@
   </section>
 
   <footer>
-    <p>© 2025 BRENNA BOYS 🌴 Estate senza fine</p>
+    <p>© 2025 BRENNA BOYS 🌊 Estate infinita</p>
   </footer>
 
 </body>
