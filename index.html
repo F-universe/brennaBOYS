@@ -82,12 +82,13 @@
 
     header {
       text-align: center;
-      padding: 80px 20px;
+      padding: 80px 20px 40px 20px;
+      position: relative;
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 4em;
-      color: #001f54; /* blu scuro */
+      color: #ffeb3b; /* giallo */
       text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
       animation: smoothWave 4s infinite ease-in-out;
       margin: 0;
@@ -100,7 +101,16 @@
       text-shadow: 0 0 8px #009ffd;
     }
 
-    /* Movimento smooth */
+    /* Sole in alto a destra */
+    .sun {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+    }
+
+    /* Movimento smooth del titolo */
     @keyframes smoothWave {
       0% { transform: translateY(0); }
       25% { transform: translateY(-10px); }
@@ -150,7 +160,7 @@
       margin-bottom: 80px;
       background: rgba(255,255,255,0.9);
       border-radius: 15px;
-      border: 4px solid #001f54; /* bordo blu scuro */
+      border: 4px solid #001f54;
       box-shadow: 0 0 15px rgba(0,0,50,0.4);
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -208,6 +218,7 @@
 
   <header>
     <h1>BRENNA BOYS</h1>
+    <img src="images/sole.png" alt="Sole" class="sun">
     <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
   </header>
 
