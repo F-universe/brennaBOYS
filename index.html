@@ -159,23 +159,24 @@
     }
     .spot {
       margin-bottom: 80px;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.9);
       padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 0 25px rgba(255, 221, 0, 0.4);
+      border: 4px solid #8b0000; /* bordo definito */
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 40px rgba(255, 105, 0, 0.7);
+      box-shadow: 0 0 30px rgba(255, 105, 0, 0.7);
     }
     .spot img {
       display: block;
       margin: 20px auto;
       border-radius: 12px;
       border: 4px solid #ffffff;
-      width: 600px;       /* tutte le immagini stessa larghezza */
+      width: 600px;       /* stessa larghezza */
       height: 350px;      /* stessa altezza */
       object-fit: cover;  /* ritaglio proporzionato */
       transition: transform 0.5s, border-color 0.5s;
