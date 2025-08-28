@@ -2,59 +2,87 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>I Luoghi del Fiume</title>
+  <title>I Luoghi del Fiume - Futuristic Edition</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f0f9ff;
-      color: #333;
+      font-family: 'Roboto', sans-serif;
+      background: #0a0f1c;
+      color: #e0e0e0;
     }
     header {
-      background: #0077b6;
-      color: white;
-      padding: 20px;
+      background: linear-gradient(90deg, #00f5d4, #00bbf9, #4361ee);
+      padding: 40px;
       text-align: center;
+      color: black;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 8px rgba(0,0,0,0.6);
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
     }
     nav {
-      background: #0096c7;
+      background: #111827;
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 10px;
+      gap: 30px;
+      padding: 15px;
+      border-bottom: 2px solid #00f5d4;
     }
     nav a {
-      color: white;
+      color: #00f5d4;
       text-decoration: none;
-      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1em;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #00bbf9;
+      text-shadow: 0 0 10px #00f5d4;
     }
     section {
-      padding: 40px;
-      max-width: 900px;
+      padding: 50px 20px;
+      max-width: 1000px;
       margin: auto;
     }
     h2 {
-      color: #0077b6;
-      border-bottom: 2px solid #90e0ef;
-      padding-bottom: 5px;
+      font-family: 'Orbitron', sans-serif;
+      color: #00f5d4;
+      border-left: 5px solid #4361ee;
+      padding-left: 10px;
+      font-size: 1.8em;
+      margin-top: 50px;
     }
     .spot {
-      margin-bottom: 60px;
+      margin-bottom: 80px;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
+      transition: transform 0.3s;
+    }
+    .spot:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 245, 212, 0.4);
     }
     .spot img {
       display: block;
-      margin: 15px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 187, 249, 0.6);
       max-width: 100%;
       height: auto;
     }
     footer {
-      background: #0077b6;
-      color: white;
+      background: #111827;
+      color: #00f5d4;
       text-align: center;
-      padding: 15px;
-      margin-top: 30px;
+      padding: 20px;
+      font-family: 'Orbitron', sans-serif;
+      border-top: 2px solid #00bbf9;
     }
   </style>
 </head>
@@ -62,51 +90,51 @@
 
   <header>
     <h1>I Luoghi del Fiume</h1>
-    <p>Scopri i posti più belli e nascosti lungo il nostro fiume</p>
+    <p>Un viaggio leggendario tra natura selvaggia e avventure epiche</p>
   </header>
 
   <nav>
     <a href="#salto">Il Salto</a>
-    <a href="#baia">La Baia di Fabio</a>
-    <a href="#rick">Il Posto di Rick</a>
-    <a href="#tank">Il Posto di Tank</a>
+    <a href="#baia">Baia di Fabio</a>
+    <a href="#rick">Posto di Rick</a>
+    <a href="#tank">Posto di Tank</a>
     <a href="#liana">La Liana</a>
   </nav>
 
   <section>
     <div id="salto" class="spot">
-      <h2>Il Salto</h2>
+      <h2>🌊 Il Salto</h2>
       <img src="images/salto.png" alt="Foto del Salto">
-      <p>Un punto spettacolare dove l’acqua del fiume forma una cascata naturale perfetta per tuffi e avventure.</p>
+      <p>Qui l’acqua esplode in pura energia. Un luogo dove il coraggio incontra l’adrenalina: solo i più audaci osano tuffarsi da queste rocce leggendarie.</p>
     </div>
 
     <div id="baia" class="spot">
-      <h2>La Baia di Fabio</h2>
+      <h2>🌅 La Baia di Fabio</h2>
       <img src="images/baia.png" alt="Foto della Baia di Fabio">
-      <p>Un angolo tranquillo con acqua calma, ideale per rilassarsi al sole e chiacchierare con gli amici.</p>
+      <p>Un rifugio nascosto dove il tempo sembra fermarsi. Le acque calme riflettono il cielo, creando un santuario segreto per chi cerca pace e libertà.</p>
     </div>
 
     <div id="rick" class="spot">
-      <h2>Il Posto di Rick</h2>
+      <h2>🌄 Il Posto di Rick</h2>
       <img src="images/rick.png" alt="Foto del Posto di Rick">
-      <p>Un luogo segreto lungo il fiume, conosciuto per i tramonti mozzafiato e la pace assoluta.</p>
+      <p>Un panorama che si accende al tramonto: colori vivi, silenzi profondi. È qui che la natura racconta storie di avventure dimenticate.</p>
     </div>
 
     <div id="tank" class="spot">
-      <h2>Il Posto di Tank</h2>
+      <h2>🏞️ Il Posto di Tank</h2>
       <img src="images/tank.png" alt="Foto del Posto di Tank">
-      <p>Zona più selvaggia, con rocce imponenti e acqua profonda: perfetto per chi ama l’avventura.</p>
+      <p>Una terra selvaggia, dominata da rocce e acque profonde. È il regno dei temerari, dove ogni onda mette alla prova la tua forza interiore.</p>
     </div>
 
     <div id="liana" class="spot">
-      <h2>La Liana</h2>
+      <h2>🌿 La Liana</h2>
       <img src="images/liana.png" alt="Foto della Liana">
-      <p>Qui una liana pende dall’albero, usata da generazioni per dondolarsi e lanciarsi nel fiume.</p>
+      <p>Un filo naturale sospeso sull’acqua. Chi si lancia da qui vola per un istante, vivendo l’ebrezza di sfidare la gravità come un eroe.</p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 I Luoghi del Fiume - Creato con ❤️</p>
+    <p>© 2025 Fiume Chronicles ⚡ Un’avventura oltre il tempo</p>
   </footer>
 
 </body>
