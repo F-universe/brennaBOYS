@@ -160,35 +160,34 @@
     .spot {
       margin-bottom: 80px;
       background: rgba(255,255,255,0.9);
-      padding: 25px;
+      padding: 0;
       border-radius: 15px;
       border: 4px solid #8b0000; /* bordo definito */
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      overflow: hidden; /* per far aderire l'immagine al box */
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
       box-shadow: 0 0 30px rgba(255, 105, 0, 0.7);
     }
     .spot img {
       display: block;
-      margin: 20px auto;
-      border-radius: 12px;
-      border: 4px solid #ffffff;
-      width: 600px;       /* stessa larghezza */
-      height: 350px;      /* stessa altezza */
-      object-fit: cover;  /* ritaglio proporzionato */
-      transition: transform 0.5s, border-color 0.5s;
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-bottom: 4px solid #8b0000;
+      transition: transform 0.5s;
     }
     .spot img:hover {
-      transform: scale(1.05) rotate(1deg);
-      border-color: #ff6b35;
+      transform: scale(1.05);
     }
     .spot p {
       font-size: 1.1em;
       line-height: 1.6em;
-      color: #000000; /* nero */
+      color: #000000;
+      padding: 15px;
     }
 
     @keyframes fadeInUp {
@@ -236,38 +235,50 @@
   <section>
     <div id="salto" class="spot">
       <h2>🌊 Il Salto</h2>
-      <img src="images/salto.png" alt="Foto del Salto">
-      <p>Un vortice di energia: qui l’acqua esplode in pura potenza. I più audaci si lanciano nel vuoto, abbracciando l’adrenalina sotto il sole estivo.</p>
+      <a href="salto.html">
+        <img src="images/salto.png" alt="Foto del Salto">
+      </a>
+      <p>Un vortice di energia: qui l’acqua esplode in pura potenza. Clicca sull’immagine per scoprire il percorso, le foto e le leggende!</p>
     </div>
 
     <div id="baia" class="spot">
       <h2>🌅 La Baia di Fabio</h2>
-      <img src="images/baia.png" alt="Foto della Baia di Fabio">
-      <p>Un santuario segreto dove il fiume si fa quiete. Le acque brillano come oro al tramonto, luogo perfetto per condividere risate infinite.</p>
+      <a href="baia.html">
+        <img src="images/baia.png" alt="Foto della Baia di Fabio">
+      </a>
+      <p>Un santuario segreto dove il fiume si fa quiete. Clicca sull’immagine per entrare nel mito e scoprire le foto di questo rifugio nascosto.</p>
     </div>
 
     <div id="rick" class="spot">
       <h2>🌄 Il Posto di Rick</h2>
-      <img src="images/rick.png" alt="Foto del Posto di Rick">
-      <p>Un punto magico dove il cielo si accende di colori caldi. Qui il tempo rallenta e ogni istante diventa memoria eterna d’estate.</p>
+      <a href="rick.html">
+        <img src="images/rick.png" alt="Foto del Posto di Rick">
+      </a>
+      <p>Un punto magico dove il cielo si accende di colori caldi. Scopri le leggende cliccando sull’immagine.</p>
     </div>
 
     <div id="tank" class="spot">
       <h2>🏞️ Il Posto di Tank</h2>
-      <img src="images/tank.png" alt="Foto del Posto di Tank">
-      <p>Un regno selvaggio, con rocce e acque profonde. È il palcoscenico ideale per le sfide sotto il sole cocente, tra forza e resistenza.</p>
+      <a href="tank.html">
+        <img src="images/tank.png" alt="Foto del Posto di Tank">
+      </a>
+      <p>Un regno selvaggio, con rocce e acque profonde. Clicca sull’immagine per scoprire il percorso e i segreti del luogo.</p>
     </div>
 
     <div id="liana" class="spot">
       <h2>🌿 La Liana</h2>
-      <img src="images/liana.png" alt="Foto della Liana">
-      <p>Un filo naturale sospeso tra cielo e acqua. Chi si lancia da qui vola tra risate, schiamazzi e bagni indimenticabili d’estate.</p>
+      <a href="liana.html">
+        <img src="images/liana.png" alt="Foto della Liana">
+      </a>
+      <p>Un filo naturale sospeso tra cielo e acqua. Clicca sull’immagine per scoprire le storie dei voli leggendari.</p>
     </div>
 
     <div id="duccio" class="spot">
       <h2>☀️ Il Posto di Duccio</h2>
-      <img src="images/duccio.png" alt="Foto del Posto di Duccio">
-      <p>Il cuore vibrante del fiume. Qui la luce del sole si specchia sull’acqua creando riflessi arcobaleno, un paradiso estivo che porta la firma di Duccio.</p>
+      <a href="duccio.html">
+        <img src="images/duccio.png" alt="Foto del Posto di Duccio">
+      </a>
+      <p>Il cuore vibrante del fiume. Clicca sull’immagine per scoprire miti, foto e leggende di questo paradiso estivo.</p>
     </div>
   </section>
 
