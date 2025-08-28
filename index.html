@@ -5,33 +5,16 @@
   <title>BRENNA BOYS</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300&display=swap');
-    body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: url("images/imm.png") repeat;
-  background-size: 150px 150px; /* dimensione dei riquadri immagine */
-  color: #000000;
-  overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
-}
 
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(270deg, #00c6ff, #0072ff, #009ffd, #2a2a72);
-      background-size: 1000% 1000%;
-      animation: gradientBG 25s ease infinite;
+      background: url("images/imm.png") repeat;
+      background-size: 150px 150px; /* grandezza con cui si ripete imm.png */
       color: #000000;
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
-    }
-
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
     }
 
     /* Onde animate */
@@ -103,12 +86,14 @@
       animation: smoothWave 4s infinite ease-in-out;
       margin: 0;
       display: inline-block;
+      position: relative;
+      z-index: 10; /* la scritta sta sempre sopra */
     }
     header p {
       font-size: 1.3em;
-      color: #e0f7fa;
+      color: #001f54;
       margin-top: 15px;
-      text-shadow: 0 0 8px #009ffd;
+      text-shadow: 0 0 8px #00c6ff;
     }
 
     /* Sole in alto a destra */
@@ -116,8 +101,9 @@
       position: absolute;
       top: 20px;
       right: 40px;
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
+      z-index: 5; /* più basso del titolo */
     }
 
     /* Movimento smooth del titolo */
