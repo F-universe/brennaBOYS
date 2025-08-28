@@ -6,14 +6,14 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300&display=swap');
 
-    /* Sfondo animato */
+    /* Sfondo animato con colori estivi */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(270deg, #0f0c29, #302b63, #24243e);
-      background-size: 600% 600%;
-      animation: gradientBG 20s ease infinite;
-      color: #e0e0e0;
+      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #fddb92, #fcb69f);
+      background-size: 1200% 1200%;
+      animation: gradientBG 25s ease infinite;
+      color: #fff8e7;
       overflow-x: hidden;
     }
 
@@ -30,41 +30,41 @@
     header h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 4em;
-      color: #00f5d4;
-      text-shadow: 0 0 10px #00f5d4, 0 0 20px #00bbf9, 0 0 40px #4361ee;
+      color: #ffe066;
+      text-shadow: 0 0 15px #ff6b6b, 0 0 30px #ff922b, 0 0 45px #f72585;
       animation: glowPulse 3s infinite alternate;
       margin: 0;
     }
     header p {
       font-size: 1.3em;
-      color: #90e0ef;
+      color: #fff3b0;
       margin-top: 15px;
-      text-shadow: 0 0 10px #00f5d4;
+      text-shadow: 0 0 10px #ff6b6b;
     }
     @keyframes glowPulse {
-      from { text-shadow: 0 0 10px #00f5d4, 0 0 20px #00bbf9; }
-      to { text-shadow: 0 0 20px #00f5d4, 0 0 40px #00bbf9, 0 0 60px #4361ee; }
+      from { text-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff922b; }
+      to { text-shadow: 0 0 20px #f72585, 0 0 40px #ff9a9e, 0 0 60px #ffdd00; }
     }
 
     nav {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
       gap: 25px;
       padding: 15px;
-      border-top: 2px solid #00f5d4;
-      border-bottom: 2px solid #00f5d4;
+      border-top: 2px solid #ffe066;
+      border-bottom: 2px solid #ffe066;
     }
     nav a {
-      color: #00f5d4;
+      color: #ffdd00;
       text-decoration: none;
       font-family: 'Orbitron', sans-serif;
       font-size: 1.2em;
       transition: 0.3s;
     }
     nav a:hover {
-      color: #00bbf9;
-      text-shadow: 0 0 10px #00f5d4, 0 0 20px #00bbf9;
+      color: #ff6b6b;
+      text-shadow: 0 0 15px #ff9a9e, 0 0 25px #f72585;
     }
 
     section {
@@ -74,29 +74,29 @@
     }
     h2 {
       font-family: 'Orbitron', sans-serif;
-      color: #00f5d4;
+      color: #ffe066;
       font-size: 2em;
-      text-shadow: 0 0 15px #00f5d4, 0 0 30px #00bbf9;
+      text-shadow: 0 0 15px #ff6b6b, 0 0 30px #ff922b;
       margin-bottom: 15px;
     }
     .spot {
       margin-bottom: 80px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.1);
       padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 0 25px rgba(0, 245, 212, 0.2);
+      box-shadow: 0 0 25px rgba(255, 221, 0, 0.4);
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 40px rgba(0, 245, 212, 0.6);
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.7);
     }
     .spot img {
       display: block;
       margin: 20px auto;
       border-radius: 12px;
-      box-shadow: 0 0 25px rgba(0, 187, 249, 0.8);
+      box-shadow: 0 0 25px rgba(255, 150, 0, 0.8);
       max-width: 100%;
       height: auto;
       transition: transform 0.5s;
@@ -107,7 +107,7 @@
     .spot p {
       font-size: 1.1em;
       line-height: 1.6em;
-      color: #d1f7ff;
+      color: #fff9e6;
     }
 
     @keyframes fadeInUp {
@@ -117,11 +117,11 @@
 
     footer {
       background: rgba(0,0,0,0.6);
-      color: #00f5d4;
+      color: #ffe066;
       text-align: center;
       padding: 20px;
       font-family: 'Orbitron', sans-serif;
-      border-top: 2px solid #00bbf9;
+      border-top: 2px solid #ff922b;
     }
   </style>
 </head>
@@ -129,7 +129,7 @@
 
   <header>
     <h1>BRENNA BOYS</h1>
-    <p>I luoghi leggendari del fiume — tra avventura, coraggio e libertà</p>
+    <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
   </header>
 
   <nav>
@@ -138,42 +138,49 @@
     <a href="#rick">Posto di Rick</a>
     <a href="#tank">Posto di Tank</a>
     <a href="#liana">La Liana</a>
+    <a href="#duccio">Posto di Duccio</a>
   </nav>
 
   <section>
     <div id="salto" class="spot">
       <h2>🌊 Il Salto</h2>
       <img src="images/salto.png" alt="Foto del Salto">
-      <p>Un vortice di energia: qui l’acqua esplode in pura potenza. I più audaci si lanciano nel vuoto, abbracciando l’adrenalina come moderni guerrieri.</p>
+      <p>Un vortice di energia: qui l’acqua esplode in pura potenza. I più audaci si lanciano nel vuoto, abbracciando l’adrenalina sotto il sole estivo.</p>
     </div>
 
     <div id="baia" class="spot">
       <h2>🌅 La Baia di Fabio</h2>
       <img src="images/baia.png" alt="Foto della Baia di Fabio">
-      <p>Un santuario segreto dove il fiume si fa quiete. Le acque brillano sotto il sole, mentre le ombre degli alberi raccontano storie di amicizia eterna.</p>
+      <p>Un santuario segreto dove il fiume si fa quiete. Le acque brillano come oro al tramonto, luogo perfetto per condividere risate infinite.</p>
     </div>
 
     <div id="rick" class="spot">
       <h2>🌄 Il Posto di Rick</h2>
       <img src="images/rick.png" alt="Foto del Posto di Rick">
-      <p>Qui il tramonto incendia il cielo. È il luogo dove i ricordi prendono forma e il tempo si piega al silenzio dorato della natura.</p>
+      <p>Un punto magico dove il cielo si accende di colori caldi. Qui il tempo rallenta e ogni istante diventa memoria eterna d’estate.</p>
     </div>
 
     <div id="tank" class="spot">
       <h2>🏞️ Il Posto di Tank</h2>
       <img src="images/tank.png" alt="Foto del Posto di Tank">
-      <p>Un regno selvaggio, scolpito da rocce e correnti profonde. Solo gli spiriti indomabili osano sfidare queste acque ribelli.</p>
+      <p>Un regno selvaggio, con rocce e acque profonde. È il palcoscenico ideale per le sfide sotto il sole cocente, tra forza e resistenza.</p>
     </div>
 
     <div id="liana" class="spot">
       <h2>🌿 La Liana</h2>
       <img src="images/liana.png" alt="Foto della Liana">
-      <p>Un filo sospeso tra cielo e acqua. Qui si vola, si urla, si ride: un istante eterno che trasforma chiunque in un eroe del fiume.</p>
+      <p>Un filo naturale sospeso tra cielo e acqua. Chi si lancia da qui vola tra risate, schiamazzi e bagni indimenticabili d’estate.</p>
+    </div>
+
+    <div id="duccio" class="spot">
+      <h2>☀️ Il Posto di Duccio</h2>
+      <img src="images/duccio.png" alt="Foto del Posto di Duccio">
+      <p>Il cuore vibrante del fiume. Qui la luce del sole si specchia sull’acqua creando riflessi arcobaleno, un paradiso estivo che porta la firma di Duccio.</p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 BRENNA BOYS ⚡ Un’avventura oltre il tempo</p>
+    <p>© 2025 BRENNA BOYS 🌴 Estate senza fine</p>
   </footer>
 
 </body>
