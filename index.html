@@ -9,12 +9,19 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: url("images/im.png") repeat;
-      background-size: 150px 150px; /* grandezza con cui si ripete imm.png */
+      background: linear-gradient(270deg, #00c6ff, #0072ff, #009ffd, #2a2a72);
+      background-size: 1000% 1000%;
+      animation: gradientBG 25s ease infinite;
       color: #000000;
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     /* Onde animate */
@@ -87,7 +94,7 @@
       margin: 0;
       display: inline-block;
       position: relative;
-      z-index: 10; /* la scritta sta sempre sopra */
+      z-index: 10; /* la scritta sta sempre sopra il sole */
     }
     header p {
       font-size: 1.3em;
@@ -103,7 +110,7 @@
       right: 40px;
       width: 200px;
       height: 200px;
-      z-index: 5; /* più basso del titolo */
+      z-index: 5; /* sotto al titolo */
     }
 
     /* Movimento smooth del titolo */
