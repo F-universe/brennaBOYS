@@ -55,7 +55,7 @@
     .bubble {
       position: fixed;
       bottom: -100px;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255,255,255,0.7);
       border-radius: 50%;
       animation: rise 10s infinite ease-in;
       z-index: -1;
@@ -97,7 +97,7 @@
       margin: 0;
       display: inline-block;
       position: relative;
-      z-index: 10; /* la scritta sta sempre sopra il sole */
+      z-index: 10; /* la scritta sta sempre sopra */
     }
     header p {
       font-size: 1.3em;
@@ -106,14 +106,19 @@
       text-shadow: 0 0 8px #00c6ff;
     }
 
-    /* Sole in alto a destra */
-    .sun {
+    /* Sole e Luna in alto a destra */
+    .sun, .moon {
       position: absolute;
       top: 20px;
-      right: 40px;
       width: 200px;
       height: 200px;
-      z-index: 5; /* sotto al titolo */
+      z-index: 5;
+    }
+    .sun {
+      right: 260px; /* più a sinistra per lasciare spazio alla luna */
+    }
+    .moon {
+      right: 40px;
     }
 
     /* Movimento smooth del titolo */
@@ -226,6 +231,7 @@
   <header>
     <h1>BRENNA BOYS</h1>
     <img src="images/sole.png" alt="Sole" class="sun">
+    <img src="images/moon.png" alt="Luna" class="moon">
     <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
   </header>
 
