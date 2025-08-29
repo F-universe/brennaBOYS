@@ -5,42 +5,77 @@
   <title>Il Salto - BRENNA BOYS</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Georgia', serif;
       margin: 0;
-      background: linear-gradient(180deg, #ffdd00, #ff922b);
-      color: #000;
+      background: linear-gradient(180deg, #0a0a0f, #1a1a2e, #16213e);
+      color: #e0e0e0;
     }
     header {
       text-align: center;
-      background: #8b0000;
-      color: #fff;
-      padding: 30px;
+      background: #0d0d1a;
+      color: #c0d8ff;
+      padding: 40px;
+      border-bottom: 3px solid #23395d;
+      text-shadow: 0 0 10px #507dbc, 0 0 20px #1e3c72;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      font-style: italic;
     }
     .content {
       max-width: 900px;
       margin: auto;
-      padding: 20px;
+      padding: 30px;
+    }
+    .content h2 {
+      color: #a4c8ff;
+      border-left: 5px solid #507dbc;
+      padding-left: 10px;
+      margin-top: 40px;
+      text-shadow: 0 0 5px #27496d;
+    }
+    .gallery {
+      text-align: center;
+      margin-top: 20px;
     }
     .gallery img {
       width: 280px;
       height: 180px;
       object-fit: cover;
-      border: 3px solid #fff;
+      border: 2px solid #507dbc;
       margin: 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,50,0.7);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #74b9ff;
+    }
+    p {
+      line-height: 1.6em;
+      font-size: 1.05em;
+      color: #d6d6d6;
     }
     a.back {
       display: inline-block;
-      margin: 20px 0;
-      padding: 10px 20px;
-      background: #8b0000;
-      color: #fff;
+      margin: 30px 0;
+      padding: 12px 25px;
+      background: #23395d;
+      color: #ffffff;
       text-decoration: none;
       border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,50,0.6);
+      transition: background 0.3s, box-shadow 0.3s;
     }
     a.back:hover {
-      background: #ff6b35;
+      background: #507dbc;
+      box-shadow: 0 0 25px #74b9ff;
     }
   </style>
 </head>
@@ -48,12 +83,14 @@
 
   <header>
     <h1>🌊 Il Salto</h1>
-    <p>Miti, leggende e percorsi di questo luogo iconico</p>
+    <p>Miti, leggende e segreti custoditi dalle acque oscure</p>
   </header>
 
   <div class="content">
     <h2>📍 Percorso per arrivare</h2>
-    <p>Dal sentiero principale del fiume, prendi la deviazione a sinistra dopo il ponte di legno. Dopo circa 10 minuti di cammino nella foresta, sentirai già il fragore dell’acqua: sei arrivato al Salto.</p>
+    <p>Dal sentiero principale del fiume, prendi la deviazione a sinistra dopo il ponte di legno.  
+    Il cammino si immerge in una fitta boscaglia dove la luce filtra appena.  
+    Dopo circa 10 minuti sentirai un rombo cupo: il fragore dell’acqua ti guiderà fino al Salto.</p>
 
     <h2>📸 Galleria immagini</h2>
     <div class="gallery">
@@ -63,8 +100,12 @@
     </div>
 
     <h2>🧙‍♂️ Miti e leggende</h2>
-    <p>Si racconta che il Salto fosse il luogo di battesimo dei giovani guerrieri del villaggio: chi osava tuffarsi senza paura otteneva il rispetto della comunità.  
-    Un’altra leggenda narra di un antico spirito dell’acqua che protegge il luogo, apparendo nelle notti di luna piena come un riflesso dorato.</p>
+    <p>Si narra che il Salto fosse il luogo in cui i giovani guerrieri affrontavano la prova suprema:  
+    gettarsi nelle acque oscure per dimostrare il proprio coraggio.  
+    Chi sopravviveva tornava cambiato, consacrato dal fiume stesso.  
+    <br><br>
+    Un’antica leggenda parla anche di uno spirito guardiano, un’entità acquatica che appare nelle notti di luna piena.  
+    Si manifesta come un bagliore dorato tra le onde, ammonendo o benedicendo coloro che osano sfidare le sue acque.</p>
 
     <a href="index.html" class="back">⬅ Torna alla pagina principale</a>
   </div>
