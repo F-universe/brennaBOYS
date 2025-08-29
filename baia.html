@@ -7,7 +7,7 @@
     body {
       font-family: 'Georgia', serif;
       margin: 0;
-      background: linear-gradient(180deg, #0a0a0f, #1a1a2e, #16213e);
+      background: linear-gradient(180deg, #0a0a0f, #141414, #1a1a2e, #0a0a0f);
       color: #e0e0e0;
     }
     header {
@@ -16,7 +16,7 @@
       color: #c0d8ff;
       padding: 40px;
       border-bottom: 3px solid #23395d;
-      text-shadow: 0 0 10px #507dbc, 0 0 20px #1e3c72;
+      text-shadow: 0 0 15px #507dbc, 0 0 30px #1e3c72;
     }
     header h1 {
       font-size: 3em;
@@ -37,15 +37,16 @@
       border-left: 5px solid #507dbc;
       padding-left: 10px;
       margin-top: 40px;
-      text-shadow: 0 0 5px #27496d;
+      text-shadow: 0 0 10px #27496d;
     }
     .gallery {
       text-align: center;
-      margin-top: 20px;
+      margin: 25px 0;
     }
     .gallery img {
-      width: 280px;
-      height: 180px;
+      width: 90%;
+      max-width: 600px;
+      height: auto;
       object-fit: cover;
       border: 2px solid #507dbc;
       margin: 10px;
@@ -55,16 +56,16 @@
     }
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px #74b9ff;
+      box-shadow: 0 0 30px #74b9ff;
     }
     p {
-      line-height: 1.6em;
+      line-height: 1.7em;
       font-size: 1.05em;
       color: #d6d6d6;
     }
     a.back {
       display: inline-block;
-      margin: 30px 0;
+      margin: 40px 0;
       padding: 12px 25px;
       background: #23395d;
       color: #ffffff;
@@ -83,32 +84,45 @@
 
   <header>
     <h1>🌅 La Baia di Fabio</h1>
-    <p>Un luogo di ambiguità, tradimenti e conquiste leggendarie</p>
+    <p>Un luogo di ambizione, sangue e ridicolo eterno per i suoi nemici</p>
   </header>
 
   <div class="content">
-    <h2>📍 Origini</h2>
-    <p>In principio questo luogo era noto come <b>Baiana di Tank</b>, così battezzato dai celebri guerrieri Riccardo e Duccio.  
-    Ma la storia si tinge subito di ambiguità: l’arciere Tank, infatti, non aveva mai visto questa terra.  
-    Secondo Fabio, egli non aveva diritto a possederla, poiché non si era neppure sforzato di raggiungerla.  
-    La sua fama di arciere era tutt’altro che gloriosa: si narra che sette frecce su nove colpissero i suoi stessi alleati, colpa che Tank attribuiva caparbiamente al vento.</p>
+    <h2>📖 Origini</h2>
+    <p>Un tempo conosciuta come <b>Baiana di Tank</b>, questo luogo portava un nome già di per sé comico: Tank, l’arciere che non aveva mai visto la baia, pretendeva di possederla.  
+    Fabio lo accusava apertamente di essere uno scansafatiche: in battaglia si nascondeva dietro le linee e scagliava frecce che colpivano i propri compagni.  
+    Le cronache riportano che <b>7 frecce su 9</b> finivano dritte negli alleati.  
+    Tank attribuiva la colpa al vento… ma nessuno gli credette mai.</p>
+
+    <div class="gallery">
+      <img src="images/baia_origini.png" alt="Antiche cronache della Baia di Fabio">
+    </div>
 
     <h2>⚔️ La Conquista</h2>
-    <p>Fabio, sentendo il peso di non avere un posto che lo rappresentasse, si unì a Duccio e con circa <b>quattromila uomini</b> marciò verso queste terre.  
-    Partendo dal vicino <b>Salto</b>, condusse i suoi eserciti alla conquista della Baia di Tank.  
-    La battaglia fu aspra: Fabio fu ferito gravemente e il suo sangue, si dice, macchi ancora oggi una roccia simbolica del luogo.  
-    Donne da ogni parte hanno formato un’associazione chiamata <i>“Troviamo il sasso di Fabio”</i>, raccogliendo milioni di euro pur di scoprire quella reliquia.  
-    Eppure, il sasso... non è mai stato trovato.</p>
+    <p>Fabio, deciso a conquistare un luogo che rappresentasse la sua grandezza, radunò <b>quattromila uomini</b> insieme a Duccio.  
+    L’assalto partì dal vicino Salto e travolse la Baia di Tank.  
+    Fabio fu ferito gravemente, il suo sangue tinse una roccia che ancora oggi è oggetto di culto.  
+    Donne da tutta la regione formarono la confraternita <i>“Troviamo il sasso di Fabio”</i>, raccogliendo milioni di euro per trovarlo.  
+    Ma il sasso, come la dignità di Tank, non è mai stato visto.</p>
+
+    <div class="gallery">
+      <img src="images/baia_battaglia.png" alt="Battaglia per la conquista della Baia di Fabio">
+    </div>
 
     <h2>🧙‍♂️ Miti e leggende</h2>
-    <p>La storia di questo posto è molto ambigua e tratta di tradimento, appartenenza e rivalità insanabili.  
-    Anche Duccio riportò gravi ferite in quella guerra, e da essa nacque il detto:  
-    <i>“Mai abbassare la guardia alla Baia di Fabio”.</i></p>
+    <p>La Baia di Fabio è avvolta nel mistero: tradimenti, alleanze spezzate e ambizione.  
+    Qui la gloria di Fabio brillò, mentre Tank cadde nel ridicolo eterno.  
+    E Riccardo? Da amico a nemico, tradì Fabio opponendosi alla sua conquista… ma senza mai alzare la spada.  
+    Il suo esercito era devastato da una malattia grottesca: la <b>Masturbopia</b>.  
+    I soldati di Riccardo, incapaci di impugnare le armi, passavano le giornate in attività solitarie che non richiedevano mira né coraggio.  
+    Così, mentre Fabio combatteva e Duccio sanguinava al suo fianco, Riccardo e Tank diventavano barzellette tramandate nei secoli.</p>
 
-    <p>Intanto Riccardo, un tempo fedele compagno di Fabio, divenne suo nemico giurato.  
-    Pur non volendo che Fabio conquistasse la baia, non offrì alcun aiuto a Tank, poiché il suo esercito era debilitato da una malattia rara e vergognosa: la <b>Masturbopia</b>.  
-    Le cronache tacciono sui dettagli, ma narrano che i suoi soldati fossero occupati in un’attività incessante, incapaci di impugnare le armi.  
-    Così nacque la leggenda della Baia di Fabio: non solo un luogo, ma un simbolo di ambizione, coraggio e tradimenti mai dimenticati.</p>
+    <p>Così nacque la leggenda:  
+    <b>La Baia di Fabio, luogo di sangue e gloria, ma anche di ridicolo eterno per i suoi nemici.</b></p>
+
+    <div class="gallery">
+      <img src="images/baia_leggende.png" alt="Rovine e misteri della Baia di Fabio">
+    </div>
 
     <a href="index.html" class="back">⬅ Torna alla pagina principale</a>
   </div>
