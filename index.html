@@ -4,141 +4,224 @@
   <meta charset="UTF-8">
   <title>BRENNA BOYS</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300&display=swap');
 
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
-      color: #eaeaea;
-      line-height: 1.6;
+      background: linear-gradient(270deg, #00c6ff, #0072ff, #009ffd, #2a2a72);
+      background-size: 1000% 1000%;
+      animation: gradientBG 25s ease infinite;
+      color: #000000;
       overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
 
-    /* --- Immagini mobili --- */
-    .moving-img {
-      position: absolute;
-      top: 40px;
-      width: 120px;
-      height: auto;
-      pointer-events: none;
-      z-index: 15;
-      transition: transform 2s ease-in-out;
-      opacity: 0.85;
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Onde animate */
+    .wave {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 200%;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 100% 50%;
+      animation: waveAnim 8s linear infinite;
+      z-index: -1;
+    }
+    .wave:nth-child(2) {
+      bottom: -30px;
+      animation-duration: 12s;
+      opacity: 0.5;
+    }
+    .wave:nth-child(3) {
+      bottom: -60px;
+      animation-duration: 16s;
+      opacity: 0.3;
+    }
+    @keyframes waveAnim {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Bolle animate */
+    .bubble {
+      position: fixed;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      animation: rise 10s infinite ease-in;
+      z-index: -1;
+    }
+    .bubble:nth-child(4) {
+      left: 20%;
+      width: 30px;
+      height: 30px;
+      animation-duration: 12s;
+    }
+    .bubble:nth-child(5) {
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      animation-duration: 18s;
+    }
+    .bubble:nth-child(6) {
+      left: 80%;
+      width: 20px;
+      height: 20px;
+      animation-duration: 10s;
+    }
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
     }
 
     header {
-      position: relative;
-      padding: 100px 20px 60px;
       text-align: center;
-      background: rgba(0,0,0,0.5);
+      padding: 80px 20px 40px 20px;
+      position: relative;
     }
     header h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3.5em;
-      color: #00eaff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4em;
+      color: #ffeb3b; /* giallo */
+      text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
+      animation: smoothWave 4s infinite ease-in-out;
       margin: 0;
-      letter-spacing: 2px;
+      display: inline-block;
       position: relative;
-      z-index: 30;
+      z-index: 10; /* la scritta sta sempre sopra il sole */
     }
     header p {
-      font-size: 1.2em;
+      font-size: 1.3em;
+      color: #001f54;
       margin-top: 15px;
-      color: #cccccc;
+      text-shadow: 0 0 8px #00c6ff;
     }
+
+    /* Sole in alto a destra */
     .sun {
       position: absolute;
       top: 20px;
       right: 40px;
-      width: 120px;
-      height: auto;
-      opacity: 0.9;
-      z-index: 10;
+      width: 200px;
+      height: 200px;
+      z-index: 5; /* sotto al titolo */
+    }
+
+    /* Movimento smooth del titolo */
+    @keyframes smoothWave {
+      0% { transform: translateY(0); }
+      25% { transform: translateY(-10px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
     }
 
     nav {
+      background: rgba(0,0,50,0.6);
       display: flex;
       justify-content: center;
-      gap: 30px;
-      background: #152935;
-      padding: 15px 20px;
-      border-bottom: 1px solid #00eaff;
+      gap: 25px;
+      padding: 15px;
+      border-top: 2px solid #00c6ff;
+      border-bottom: 2px solid #00c6ff;
+      position: relative;
+      z-index: 2;
     }
     nav a {
-      font-family: 'Poppins', sans-serif;
-      color: #eaeaea;
+      color: #00eaff;
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s, border-bottom 0.3s;
-      padding-bottom: 3px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2em;
+      transition: 0.3s;
     }
     nav a:hover {
-      color: #00eaff;
-      border-bottom: 2px solid #00eaff;
+      color: #fff;
+      text-shadow: 0 0 15px #00c6ff, 0 0 25px #0072ff;
     }
 
     section {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
     }
     h2 {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Orbitron', sans-serif;
+      color: #001f54;
       font-size: 2em;
-      color: #00eaff;
+      text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
       margin-bottom: 15px;
     }
 
     .spot {
-      margin-bottom: 70px;
-      background: #1c2d3a;
-      border-radius: 12px;
+      margin-bottom: 80px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      border: 4px solid #001f54;
+      box-shadow: 0 0 15px rgba(0,0,50,0.4);
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    }
-    .spot a {
-      display: block;
-      position: relative;
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
     }
     .spot img {
+      display: block;
       width: 100%;
       height: 350px;
       object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
+      border-bottom: 4px solid #001f54;
+      transition: transform 0.5s;
     }
-    .spot a:hover img {
+    .spot img:hover {
       transform: scale(1.05);
     }
     .spot p {
-      padding: 20px;
-      font-size: 1.05em;
-      color: #dcdcdc;
+      font-size: 1.1em;
+      line-height: 1.6em;
+      color: #000000;
+      padding: 15px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer {
-      background: #152935;
+      background: rgba(0,0,50,0.6);
+      color: #00eaff;
       text-align: center;
-      padding: 25px;
-      color: #cccccc;
-      font-size: 0.9em;
-      border-top: 1px solid #00eaff;
+      padding: 20px;
+      font-family: 'Orbitron', sans-serif;
+      border-top: 2px solid #0072ff;
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
 
-  <!-- immagini mobili (4 copie di imma.png) -->
-  <img src="images/imma.png" alt="Decorazione" class="moving-img" id="moving1">
-  <img src="images/imma.png" alt="Decorazione" class="moving-img" id="moving2">
-  <img src="images/imma.png" alt="Decorazione" class="moving-img" id="moving3">
-  <img src="images/imma.png" alt="Decorazione" class="moving-img" id="moving4">
+  <!-- Onde e bolle animate -->
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
 
   <header>
     <h1>BRENNA BOYS</h1>
@@ -206,37 +289,8 @@
   </section>
 
   <footer>
-    <p>© 2025 BRENNA BOYS — Estate infinita</p>
+    <p>© 2025 BRENNA BOYS 🌊 Estate infinita</p>
   </footer>
-
-  <script>
-    // Funzione per muovere le immagini
-    function moveRandom(img, maxY) {
-      const maxX = window.innerWidth - 150;
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
-      img.style.transform = `translate(${randomX}px, ${randomY}px)`;
-    }
-
-    const imgs = [
-      document.getElementById("moving1"),
-      document.getElementById("moving2"),
-      document.getElementById("moving3"),
-      document.getElementById("moving4")
-    ];
-
-    // Posizioni iniziali diverse
-    imgs.forEach((img, index) => {
-      img.style.top = `${20 + index * 60}px`;
-    });
-
-    // Ogni 3 secondi le immagini si muovono casualmente
-    setInterval(() => {
-      imgs.forEach((img, index) => {
-        moveRandom(img, 150); // movimento entro 150px verticali
-      });
-    }, 3000);
-  </script>
 
 </body>
 </html>
