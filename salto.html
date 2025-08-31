@@ -7,7 +7,7 @@
     body {
       font-family: 'Georgia', serif;
       margin: 0;
-      background: linear-gradient(180deg, #0a0a0f, #1a1a2e, #16213e);
+      background: linear-gradient(180deg, #0a0a0f, #141414, #1a1a2e, #0a0a0f);
       color: #e0e0e0;
     }
     header {
@@ -16,7 +16,7 @@
       color: #c0d8ff;
       padding: 40px;
       border-bottom: 3px solid #23395d;
-      text-shadow: 0 0 10px #507dbc, 0 0 20px #1e3c72;
+      text-shadow: 0 0 15px #507dbc, 0 0 30px #1e3c72;
     }
     header h1 {
       font-size: 3em;
@@ -37,15 +37,16 @@
       border-left: 5px solid #507dbc;
       padding-left: 10px;
       margin-top: 40px;
-      text-shadow: 0 0 5px #27496d;
+      text-shadow: 0 0 10px #27496d;
     }
     .gallery {
       text-align: center;
-      margin-top: 20px;
+      margin: 25px 0;
     }
     .gallery img {
-      width: 280px;
-      height: 180px;
+      width: 90%;
+      max-width: 600px;
+      height: auto;
       object-fit: cover;
       border: 2px solid #507dbc;
       margin: 10px;
@@ -55,16 +56,22 @@
     }
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px #74b9ff;
+      box-shadow: 0 0 30px #74b9ff;
+    }
+    .caption {
+      font-size: 0.9em;
+      color: #a4c8ff;
+      font-style: italic;
+      margin-top: -5px;
     }
     p {
-      line-height: 1.6em;
+      line-height: 1.7em;
       font-size: 1.05em;
       color: #d6d6d6;
     }
     a.back {
       display: inline-block;
-      margin: 30px 0;
+      margin: 40px 0;
       padding: 12px 25px;
       background: #23395d;
       color: #ffffff;
@@ -83,40 +90,43 @@
 
   <header>
     <h1>🌊 Il Salto</h1>
-    <p>Storie oscure e leggende sul più temuto punto del fiume</p>
+    <p>Tra rocce imponenti e mostri marini assetati di sangue</p>
   </header>
 
   <div class="content">
-    <h2>📍 Percorso per arrivare</h2>
-    <p>Dal sentiero principale del fiume, prendi la deviazione a sinistra dopo il ponte di legno.  
-    Il cammino attraversa un terreno impervio, fatto di rocce e terra ammassata fino a 20 metri di altezza.  
-    Alla fine del sentiero si apre il burrone: da lì si osserva il famigerato Salto.</p>
+    <h2>📖 Origini</h2>
+    <p>Il nome del Salto, secondo le leggende, nasce da un enorme ammasso di rocce e terra che si erge per oltre <b>20 metri</b> sopra il fiume.  
+    Questo luogo è da sempre considerato una sfida mortale: chi si tuffa non sa mai se tornerà vivo o meno.</p>
 
-    <h2>📸 Galleria immagini</h2>
     <div class="gallery">
-      <img src="images/salto.png" alt="Vista principale del Salto">
-      <img src="images/salto2.png" alt="Vista panoramica del Salto">
-      <img src="images/salto3.png" alt="Dettaglio dell’acqua">
+      <img src="images/rocce_salto.png" alt="Le rocce imponenti del Salto">
+      <div class="caption">L'ammasso di rocce e terra che ha dato origine al nome del Salto.</div>
+    </div>
+
+    <h2>🐟 I mostri delle acque</h2>
+    <p>Nelle acque oscure sottostanti vivono creature misteriose, dei mostri marini di cui non si conoscono le origini.  
+    Per qualche strano motivo, queste bestie sono attratte dagli esseri umani:  
+    <ul>
+      <li>Se nel sangue ci sono tracce di <b>nicotina</b>, i pesci si infuriano e divorano la vittima lentamente, facendola soffrire.</li>
+      <li>Se invece trovano residui di <b>THC</b>, la morte viene concessa velocemente: il corpo rilassa i pesci stressati.</li>
+    </ul>
+    Questo ha portato a leggi precise tra i mostri: ogni pesce può dare solo <i>due morsi</i> a un umano, poi deve passarlo ai compagni.  
+    Da qui nasce il detto: <b>“due pezzi di umano a testa”</b>.</p>
+
+    <div class="gallery">
+      <img src="images/mostri_salto.png" alt="I mostri marini del Salto">
+      <div class="caption">I leggendari pesci del Salto, divisi tra odio e dipendenza.</div>
     </div>
 
     <h2>🧙‍♂️ Miti e leggende</h2>
-    <p>Il nome del Salto, secondo le leggende, nasce da un ammasso di rocce e terra che si erge per venti metri sopra il fiume.  
-    Ma il vero mistero è nelle acque sottostanti: qui vivono mostri marini di origine ignota, attratti dal sangue umano.  
+    <p>Gli umani che si tuffano dal Salto lo fanno per placare la <i>scimmia</i> di questi mostri.  
+    Ma se i pesci sono già sazi e non riescono a divorare un nuovo arrivato, si dice che “non le reggono”:  
+    in quel caso l’uomo sopravvive e diventa un <b>guerriero</b>.  
+    Così nacquero i leggendari Duccio, Fabio e Riccardo.  
     <br><br>
-    Si racconta che questi pesci reagiscano in modo diverso in base a ciò che trovano nel corpo delle persone:  
-    gli umani con tracce di nicotina vengono odiati e divorati lentamente, tra sofferenze indicibili;  
-    chi invece ha nel sangue residui di THC riceve una morte rapida, perché il loro corpo rilassa i pesci stressati.  
-    Per questo, tra di loro, hanno stabilito delle leggi: ogni pesce può mordere due volte la stessa vittima, e poi deve passarla ad altri.  
-    Da qui nasce l’espressione: <i>“due pezzi di umano a testa”</i>.  
-    <br><br>
-    Quando un uomo troppo magro o troppo grasso si lancia, viene definito dagli stessi pesci come <i>“umano rollato male”</i>.  
-    E quando prevale la nicotina sul THC, l’umano diventa una <i>“tabaccata”</i>, molto apprezzata da un sottogruppo di pesci noto come i <b>pischelli</b>.  
-    <br><br>
-    In tempi antichi, per placare la fame e la scimmia dei pesci, gli uomini si gettavano dal Salto.  
-    Si dice che se i pesci sono sazi e non riescono a divorare un umano, allora “non le reggono”, e quell’uomo sopravvive:  
-    chi supera questa prova diventa guerriero, come i leggendari Duccio, Fabio e Riccardo.  
-    <br><br>
-    Quanto all’arciere Tank… la sua storia è molto più complicata.</p>
+    Tra i racconti tramandati di generazione in generazione, si parla anche degli umani <i>rollati male</i> (troppo magri o troppo grossi)  
+    e delle <i>tabaccate</i>, apprezzate solo da un sotto-gruppo di mostri conosciuti come i <b>pischelli</b>.  
+    Quanto all’arciere Tank… la sua storia rimane molto più complicata.</p>
 
     <a href="index.html" class="back">⬅ Torna alla pagina principale</a>
   </div>
