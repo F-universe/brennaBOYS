@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Ruota Misteriosa</title>
+  <title>La Ruota dei Segreti</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300&display=swap');
 
@@ -22,16 +22,25 @@
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 3em;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       color: #00eaff;
       text-shadow: 0 0 20px #00eaff, 0 0 40px #0072ff;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #ffeb3b;
+      text-shadow: 0 0 10px #ffeb3b;
+      margin-bottom: 30px;
+      max-width: 800px;
+      text-align: center;
     }
 
     /* Contenitore della ruota */
     .wheel-container {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 420px;
+      height: 420px;
     }
 
     .wheel {
@@ -41,14 +50,20 @@
       border: 8px solid #00eaff;
       box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
       background: conic-gradient(
-        #ff3c3c 0deg 60deg,
-        #ff9f1c 60deg 120deg,
-        #2ec4b6 120deg 180deg,
-        #00c6ff 180deg 240deg,
-        #9d4edd 240deg 300deg,
-        #f72585 300deg 360deg
+        #ff3c3c 0deg 30deg,
+        #ff9f1c 30deg 60deg,
+        #2ec4b6 60deg 90deg,
+        #00c6ff 90deg 120deg,
+        #9d4edd 120deg 150deg,
+        #f72585 150deg 180deg,
+        #38b000 180deg 210deg,
+        #ff6f61 210deg 240deg,
+        #06d6a0 240deg 270deg,
+        #ffbe0b 270deg 300deg,
+        #118ab2 300deg 330deg,
+        #ef476f 330deg 360deg
       );
-      transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      transition: transform 6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     }
 
     /* Puntatore in alto */
@@ -90,12 +105,19 @@
       font-size: 1.4em;
       color: #ffeb3b;
       text-shadow: 0 0 15px #ffeb3b;
+      text-align: center;
+      max-width: 600px;
     }
   </style>
 </head>
 <body>
 
-  <h1>🎡 La Ruota Misteriosa 🎡</h1>
+  <h1>🎡 La Ruota dei Segreti 🎡</h1>
+  <p>
+    Questa è la <strong>Ruota dei Segreti dei Guerrieri</strong>.  
+    Solo i più coraggiosi osano girarla per scoprire i misteri nascosti di Riccardo, Duccio, Fabio e dell’Arciere Tank.  
+    Premi il pulsante e lascia che la sorte riveli un segreto...
+  </p>
 
   <div class="wheel-container">
     <div class="pointer"></div>
@@ -110,13 +132,19 @@
     const wheel = document.getElementById("wheel");
     const resultDiv = document.getElementById("result");
 
-    const prizes = [
-      "❌ Nulla!",
-      "🎁 Premio Segreto",
-      "🍕 Una Pizza Gratis",
-      "🏝️ Vacanza Immaginaria",
-      "💎 Diamante Misterioso",
-      "🔥 Super Jackpot!"
+    const secrets = [
+      "Riccardo una volta affrontò il fiume di notte, sfidando le correnti oscure.",
+      "Duccio conosce un passaggio segreto che porta al cuore nascosto della Baia.",
+      "Fabio ha costruito con le sue mani una zattera per navigare verso terre ignote.",
+      "Tank l’arciere non sbaglia mai un colpo: una freccia sua è ancora conficcata in un vecchio albero.",
+      "Riccardo vinse una gara di resistenza restando ore nell’acqua gelida.",
+      "Duccio scoprì una grotta dietro la cascata che solo lui conosce.",
+      "Fabio riuscì a scalare la rupe più alta, lasciando un segno inciso nella pietra.",
+      "Tank una volta colpì una bottiglia vuota posta a 100 metri di distanza.",
+      "Riccardo racconta di aver visto strane luci danzare sulla superficie del fiume.",
+      "Duccio ha trovato un antico simbolo inciso in una roccia vicino al Salto.",
+      "Fabio una notte seguì le stelle e trovò un nuovo sentiero lungo il fiume.",
+      "Tank ha un arco leggendario, costruito con legno sacro trovato nella foresta."
     ];
 
     let spinning = false;
@@ -125,17 +153,16 @@
       if (spinning) return;
       spinning = true;
 
-      // Rotazione random
-      const extraSpins = 5; // giri completi
-      const stopAt = Math.floor(Math.random() * 6); // 6 settori
-      const degrees = 360 * extraSpins + (stopAt * 60) + 30; // +30 per centrare il puntatore
+      const extraSpins = 5; // minimo 5 giri completi
+      const stopAt = Math.floor(Math.random() * 12); // 12 settori
+      const degrees = 360 * extraSpins + (stopAt * 30) + 15; // 30° ogni settore, +15 per centrare
 
       wheel.style.transform = `rotate(${degrees}deg)`;
 
       setTimeout(() => {
-        resultDiv.textContent = "Hai vinto: " + prizes[stopAt];
+        resultDiv.textContent = "🔮 Segreto rivelato: " + secrets[stopAt];
         spinning = false;
-      }, 5000); // durata transizione
+      }, 6000); // durata transizione
     }
   </script>
 
