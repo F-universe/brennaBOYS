@@ -68,19 +68,21 @@
     }
 
     /* Puntatore sopra la ruota */
-    .pointer {
-      position: absolute;
-      top: -60px; /* sopra la ruota */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 25px solid transparent;
-      border-right: 25px solid transparent;
-      border-bottom: 45px solid #ffeb3b; /* punta verso il basso */
-      filter: drop-shadow(0 0 10px #ffeb3b);
-      z-index: 10;
-    }
+    /* Puntatore a destra che punta a sinistra */
+.pointer {
+  position: absolute;
+  top: 50%;
+  right: -45px; /* fuori dal bordo destro */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 40px solid #ffea00; /* punta verso sinistra */
+  filter: drop-shadow(0 0 8px #ff0000) drop-shadow(0 0 15px #ffea00);
+  z-index: 10;
+}
+
 
     button {
       margin-top: 40px;
