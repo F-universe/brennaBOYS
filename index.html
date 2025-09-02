@@ -9,180 +9,109 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(270deg, #00c6ff, #0072ff, #009ffd, #2a2a72);
-      background-size: 1000% 1000%;
-      animation: gradientBG 25s ease infinite;
-      color: #000000;
+      background: #0d0d0d;
+      color: #f0f0f0;
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
     }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Onde animate */
-    .wave {
+    /* Sfondo dinamico con particelle */
+    #particles {
       position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 200%;
-      height: 200px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 100% 50%;
-      animation: waveAnim 8s linear infinite;
-      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      overflow: hidden;
+      z-index: -2;
     }
-    .wave:nth-child(2) {
-      bottom: -30px;
-      animation-duration: 12s;
-      opacity: 0.5;
-    }
-    .wave:nth-child(3) {
-      bottom: -60px;
-      animation-duration: 16s;
-      opacity: 0.3;
-    }
-    @keyframes waveAnim {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Bolle animate */
-    .bubble {
-      position: fixed;
-      bottom: -100px;
-      background: rgba(255, 255, 255, 0.7);
+    .particle {
+      position: absolute;
+      background: rgba(0, 200, 255, 0.8);
       border-radius: 50%;
-      animation: rise 10s infinite ease-in;
-      z-index: -1;
+      animation: floatUp linear infinite;
     }
-    .bubble:nth-child(4) {
-      left: 20%;
-      width: 30px;
-      height: 30px;
-      animation-duration: 12s;
-    }
-    .bubble:nth-child(5) {
-      left: 50%;
-      width: 50px;
-      height: 50px;
-      animation-duration: 18s;
-    }
-    .bubble:nth-child(6) {
-      left: 80%;
-      width: 20px;
-      height: 20px;
-      animation-duration: 10s;
-    }
-    @keyframes rise {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(0.3); opacity: 1; }
+      to   { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
     header {
       text-align: center;
-      padding: 80px 20px 40px 20px;
+      padding: 100px 20px 40px 20px;
       position: relative;
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4em;
-      color: #ffeb3b; /* giallo */
-      text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
-      animation: smoothWave 4s infinite ease-in-out;
+      font-size: 3.8em;
+      color: #00eaff;
+      text-shadow: 0 0 20px #0072ff, 0 0 40px #00c6ff;
       margin: 0;
-      display: inline-block;
-      position: relative;
-      z-index: 10; /* la scritta sta sempre sopra il sole */
+      animation: glowPulse 4s ease-in-out infinite;
     }
     header p {
-      font-size: 1.3em;
-      color: #001f54;
+      font-size: 1.2em;
+      color: #b0d8ff;
       margin-top: 15px;
-      text-shadow: 0 0 8px #00c6ff;
     }
-
-    /* Sole in alto a destra */
-    .sun {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      width: 200px;
-      height: 200px;
-      z-index: 5; /* sotto al titolo */
-    }
-
-    /* Movimento smooth del titolo */
-    @keyframes smoothWave {
-      0% { transform: translateY(0); }
-      25% { transform: translateY(-10px); }
-      50% { transform: translateY(0); }
-      75% { transform: translateY(10px); }
-      100% { transform: translateY(0); }
+    @keyframes glowPulse {
+      0%,100% { text-shadow: 0 0 20px #0072ff, 0 0 40px #00c6ff; }
+      50% { text-shadow: 0 0 30px #00eaff, 0 0 60px #00c6ff; }
     }
 
     nav {
-      background: rgba(0,0,50,0.6);
+      background: rgba(0,0,0,0.7);
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 30px;
       padding: 15px;
-      border-top: 2px solid #00c6ff;
-      border-bottom: 2px solid #00c6ff;
-      position: relative;
-      z-index: 2;
+      border-top: 1px solid #00c6ff;
+      border-bottom: 1px solid #00c6ff;
     }
     nav a {
       color: #00eaff;
       text-decoration: none;
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: 0.3s;
     }
     nav a:hover {
       color: #fff;
-      text-shadow: 0 0 15px #00c6ff, 0 0 25px #0072ff;
+      text-shadow: 0 0 12px #00c6ff;
     }
 
     section {
-      padding: 60px 20px;
+      padding: 70px 20px;
       max-width: 1000px;
       margin: auto;
-      position: relative;
-      z-index: 2;
     }
     h2 {
       font-family: 'Orbitron', sans-serif;
-      color: #001f54;
+      color: #00eaff;
       font-size: 2em;
-      text-shadow: 0 0 15px #00c6ff, 0 0 30px #0072ff;
       margin-bottom: 15px;
+      text-shadow: 0 0 12px #0072ff;
     }
 
     .spot {
-      margin-bottom: 80px;
-      background: rgba(255,255,255,0.9);
+      margin-bottom: 70px;
+      background: rgba(20,20,20,0.8);
       border-radius: 15px;
-      border: 4px solid #001f54;
-      box-shadow: 0 0 15px rgba(0,0,50,0.4);
+      border: 1px solid #0072ff;
+      box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeInUp 1.5s ease;
     }
     .spot:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
     }
     .spot img {
       display: block;
       width: 100%;
-      height: 350px;
+      height: 320px;
       object-fit: cover;
-      border-bottom: 4px solid #001f54;
+      border-bottom: 1px solid #0072ff;
       transition: transform 0.5s;
     }
     .spot img:hover {
@@ -191,41 +120,27 @@
     .spot p {
       font-size: 1.1em;
       line-height: 1.6em;
-      color: #000000;
+      color: #e0e0e0;
       padding: 15px;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     footer {
-      background: rgba(0,0,50,0.6);
+      background: rgba(0,0,0,0.8);
       color: #00eaff;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-family: 'Orbitron', sans-serif;
-      border-top: 2px solid #0072ff;
-      position: relative;
-      z-index: 2;
+      border-top: 1px solid #0072ff;
     }
   </style>
 </head>
 <body>
 
-  <!-- Onde e bolle animate -->
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
+  <!-- Sfondo dinamico -->
+  <div id="particles"></div>
 
   <header>
     <h1>BRENNA BOYS</h1>
-    <img src="images/sole.png" alt="Sole" class="sun">
     <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
   </header>
 
@@ -241,49 +156,37 @@
   <section>
     <div id="salto" class="spot">
       <h2>🌊 Il Salto</h2>
-      <a href="salto.html">
-        <img src="images/salto.png" alt="Foto del Salto">
-      </a>
+      <a href="salto.html"><img src="images/salto.png" alt="Foto del Salto"></a>
       <p>Un vortice di energia: qui l’acqua esplode in pura potenza. Clicca sull’immagine per scoprire il percorso, le foto e le leggende!</p>
     </div>
 
     <div id="baia" class="spot">
       <h2>🌅 La Baia di Fabio</h2>
-      <a href="baia.html">
-        <img src="images/baia.png" alt="Foto della Baia di Fabio">
-      </a>
+      <a href="baia.html"><img src="images/baia.png" alt="Foto della Baia di Fabio"></a>
       <p>Un santuario segreto dove il fiume si fa quiete. Clicca sull’immagine per scoprire le storie di questo rifugio nascosto.</p>
     </div>
 
     <div id="rick" class="spot">
       <h2>🌄 Il Posto di Rick</h2>
-      <a href="rick.html">
-        <img src="images/rick.png" alt="Foto del Posto di Rick">
-      </a>
+      <a href="rick.html"><img src="images/rick.png" alt="Foto del Posto di Rick"></a>
       <p>Un punto magico dove il cielo si accende di colori caldi. Scopri le leggende cliccando sull’immagine.</p>
     </div>
 
     <div id="tank" class="spot">
       <h2>🏞️ Il Posto di Tank</h2>
-      <a href="tank.html">
-        <img src="images/tank.png" alt="Foto del Posto di Tank">
-      </a>
+      <a href="tank.html"><img src="images/tank.png" alt="Foto del Posto di Tank"></a>
       <p>Un regno selvaggio, con rocce e acque profonde. Clicca sull’immagine per scoprire il percorso e i segreti del luogo.</p>
     </div>
 
     <div id="liana" class="spot">
       <h2>🌿 La Liana</h2>
-      <a href="liana.html">
-        <img src="images/liana.png" alt="Foto della Liana">
-      </a>
+      <a href="liana.html"><img src="images/liana.png" alt="Foto della Liana"></a>
       <p>Un filo naturale sospeso tra cielo e acqua. Clicca sull’immagine per scoprire le storie dei voli leggendari.</p>
     </div>
 
     <div id="duccio" class="spot">
       <h2>☀️ Il Posto di Duccio</h2>
-      <a href="duccio.html">
-        <img src="images/duccio.png" alt="Foto del Posto di Duccio">
-      </a>
+      <a href="duccio.html"><img src="images/duccio.png" alt="Foto del Posto di Duccio"></a>
       <p>Il cuore vibrante del fiume. Clicca sull’immagine per scoprire miti, foto e leggende di questo paradiso estivo.</p>
     </div>
   </section>
@@ -291,6 +194,21 @@
   <footer>
     <p>© 2025 BRENNA BOYS 🌊 Estate infinita</p>
   </footer>
+
+  <!-- Script per generare particelle -->
+  <script>
+    const particlesContainer = document.getElementById("particles");
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
+      const size = Math.random() * 6 + 4;
+      particle.style.width = size + "px";
+      particle.style.height = size + "px";
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.animationDuration = (6 + Math.random() * 10) + "s";
+      particlesContainer.appendChild(particle);
+    }
+  </script>
 
 </body>
 </html>
