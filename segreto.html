@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruota Misteriosa</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      margin-bottom: 30px;
+      color: #00eaff;
+      text-shadow: 0 0 20px #00eaff, 0 0 40px #0072ff;
+    }
+
+    /* Contenitore della ruota */
+    .wheel-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 8px solid #00eaff;
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
+      background: conic-gradient(
+        #ff3c3c 0deg 60deg,
+        #ff9f1c 60deg 120deg,
+        #2ec4b6 120deg 180deg,
+        #00c6ff 180deg 240deg,
+        #9d4edd 240deg 300deg,
+        #f72585 300deg 360deg
+      );
+      transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    }
+
+    /* Puntatore in alto */
+    .pointer {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid #ffeb3b;
+      filter: drop-shadow(0 0 10px #ffeb3b);
+    }
+
+    /* Bottone spin */
+    button {
+      margin-top: 40px;
+      padding: 15px 40px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00eaff, #0072ff);
+      color: white;
+      box-shadow: 0 0 20px rgba(0,200,255,0.6);
+      transition: 0.3s;
+    }
+    button:hover {
+      box-shadow: 0 0 30px rgba(0,200,255,1);
+      transform: scale(1.05);
+    }
+
+    /* Risultato */
+    #result {
+      margin-top: 25px;
+      font-size: 1.4em;
+      color: #ffeb3b;
+      text-shadow: 0 0 15px #ffeb3b;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎡 La Ruota Misteriosa 🎡</h1>
+
+  <div class="wheel-container">
+    <div class="pointer"></div>
+    <div id="wheel" class="wheel"></div>
+  </div>
+
+  <button onclick="spin()">Gira la Ruota</button>
+
+  <div id="result"></div>
+
+  <script>
+    const wheel = document.getElementById("wheel");
+    const resultDiv = document.getElementById("result");
+
+    const prizes = [
+      "❌ Nulla!",
+      "🎁 Premio Segreto",
+      "🍕 Una Pizza Gratis",
+      "🏝️ Vacanza Immaginaria",
+      "💎 Diamante Misterioso",
+      "🔥 Super Jackpot!"
+    ];
+
+    let spinning = false;
+
+    function spin() {
+      if (spinning) return;
+      spinning = true;
+
+      // Rotazione random
+      const extraSpins = 5; // giri completi
+      const stopAt = Math.floor(Math.random() * 6); // 6 settori
+      const degrees = 360 * extraSpins + (stopAt * 60) + 30; // +30 per centrare il puntatore
+
+      wheel.style.transform = `rotate(${degrees}deg)`;
+
+      setTimeout(() => {
+        resultDiv.textContent = "Hai vinto: " + prizes[stopAt];
+        spinning = false;
+      }, 5000); // durata transizione
+    }
+  </script>
+
+</body>
+</html>
