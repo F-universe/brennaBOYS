@@ -62,7 +62,7 @@
         #118ab2 300deg 330deg,
         #ef476f 330deg 360deg
       );
-      transition: transform 6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     }
 
     .pointer {
@@ -112,7 +112,7 @@
   <p>
     Questa è la <strong>Ruota dei Segreti dei Guerrieri</strong>.  
     Riccardo, Duccio, Fabio e l’arciere Tank hanno custodito verità scomode e leggende dimenticate.  
-    Gira la ruota, lascia che compia almeno cinque giri, e scopri quale segreto verrà svelato...
+    Gira la ruota, lascia che compia almeno tre giri, e scopri quale segreto verrà svelato...
   </p>
 
   <div class="wheel-container">
@@ -144,21 +144,23 @@
     ];
 
     let spinning = false;
+    let currentRotation = 0;
 
     function spin() {
       if (spinning) return;
       spinning = true;
 
-      const extraSpins = 5; // minimo 5 giri
+      const extraSpins = 3; // minimo 3 giri
       const stopAt = Math.floor(Math.random() * 12); // 12 settori
       const degrees = 360 * extraSpins + (stopAt * 30) + 15;
 
-      wheel.style.transform = `rotate(${degrees}deg)`;
+      currentRotation += degrees;
+      wheel.style.transform = `rotate(${currentRotation}deg)`;
 
       setTimeout(() => {
         resultDiv.textContent = "🔮 Segreto rivelato: " + secrets[stopAt];
         spinning = false;
-      }, 6000);
+      }, 5000);
     }
   </script>
 
