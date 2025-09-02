@@ -14,10 +14,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
-      overflow: hidden;
       padding-top: 40px;
+      min-height: 100vh;
     }
 
     h1 {
@@ -36,15 +34,12 @@
       max-width: 850px;
     }
 
-    /* Contenitore ruota */
     .wheel-container {
       position: relative;
       width: 450px;
       aspect-ratio: 1/1;
-      margin: 0 auto;
     }
 
-    /* Ruota */
     .wheel {
       width: 100%;
       height: 100%;
@@ -68,10 +63,9 @@
       transition: transform 6s cubic-bezier(0.25, 1, 0.3, 1);
     }
 
-    /* Puntatore */
     .pointer {
       position: absolute;
-      top: -60px; /* sopra la ruota */
+      top: -60px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
@@ -125,12 +119,13 @@
     <div id="wheel" class="wheel"></div>
   </div>
 
-  <button onclick="spin()">Gira la Ruota</button>
+  <button id="spinButton">Gira la Ruota</button>
 
   <div id="result"></div>
 
   <script>
     const wheel = document.getElementById("wheel");
+    const button = document.getElementById("spinButton");
     const resultDiv = document.getElementById("result");
 
     const secrets = [
@@ -151,7 +146,7 @@
     let spinning = false;
     let currentRotation = 0;
 
-    function spin() {
+    function spinWheel() {
       if (spinning) return;
       spinning = true;
 
@@ -167,6 +162,8 @@
         spinning = false;
       }, 6000);
     }
+
+    button.addEventListener("click", spinWheel);
   </script>
 
 </body>
