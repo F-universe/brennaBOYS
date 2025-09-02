@@ -40,8 +40,7 @@
     .wheel-container {
       position: relative;
       width: 450px;
-      aspect-ratio: 1/1; /* sempre quadrata -> cerchio */
-      margin: auto;
+      height: 450px;
     }
 
     .wheel {
@@ -70,16 +69,15 @@
     /* Puntatore sopra la ruota */
     .pointer {
       position: absolute;
-      top: -60px; /* sopra la ruota */
+      top: -35px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
       height: 0;
       border-left: 25px solid transparent;
       border-right: 25px solid transparent;
-      border-bottom: 45px solid #ffeb3b; /* punta verso il basso */
+      border-top: 45px solid #ffeb3b;
       filter: drop-shadow(0 0 10px #ffeb3b);
-      z-index: 10;
     }
 
     button {
@@ -115,8 +113,8 @@
   <h1>🎡 La Ruota dei Segreti 🎡</h1>
   <p>
     Questa è la <strong>Ruota dei Segreti dei Guerrieri</strong>.  
-    Riccardo, Duccio, Fabio e l’Arciere Tank hanno custodito verità scomode e leggende dimenticate.  
-    Premi il pulsante e scopri quale mistero verrà rivelato...
+    Riccardo, Duccio, Fabio e l’arciere Tank hanno custodito verità scomode e leggende dimenticate.  
+    Gira la ruota e scopri quale segreto verrà svelato...
   </p>
 
   <div class="wheel-container">
@@ -154,9 +152,9 @@
       if (spinning) return;
       spinning = true;
 
-      const extraSpins = Math.floor(Math.random() * 4) + 4; // minimo 4 giri
+      const extraSpins = Math.floor(Math.random() * 4) + 4; // almeno 4 giri
       const stopAt = Math.floor(Math.random() * 12); // 12 settori
-      const degrees = 360 * extraSpins + (stopAt * 30) + 15; // 30° per settore
+      const degrees = 360 * extraSpins + (stopAt * 30) + 15; // 30° per settore, +15 per centrare
 
       currentRotation += degrees;
       wheel.style.transform = `rotate(${currentRotation}deg)`;
