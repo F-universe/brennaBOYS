@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      background: radial-gradient(circle at center, #141e30, #243b55);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -36,18 +36,19 @@
       text-align: center;
     }
 
+    /* Contenitore della ruota */
     .wheel-container {
       position: relative;
-      width: 420px;
-      height: 420px;
+      width: 450px;
+      height: 450px;
     }
 
     .wheel {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 8px solid #00eaff;
-      box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
+      border: 10px solid #00eaff;
+      box-shadow: 0 0 40px rgba(0, 200, 255, 0.7);
       background: conic-gradient(
         #ff3c3c 0deg 30deg,
         #ff9f1c 30deg 60deg,
@@ -65,16 +66,17 @@
       transition: transform 6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     }
 
+    /* Puntatore sopra la ruota */
     .pointer {
       position: absolute;
-      top: -25px;
+      top: -35px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
       height: 0;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-bottom: 40px solid #ffeb3b;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 45px solid #ffeb3b;
       filter: drop-shadow(0 0 10px #ffeb3b);
     }
 
@@ -92,7 +94,7 @@
       transition: 0.3s;
     }
     button:hover {
-      box-shadow: 0 0 30px rgba(0,200,255,1);
+      box-shadow: 0 0 40px rgba(0,200,255,1);
       transform: scale(1.05);
     }
 
@@ -112,7 +114,7 @@
   <p>
     Questa è la <strong>Ruota dei Segreti dei Guerrieri</strong>.  
     Riccardo, Duccio, Fabio e l’arciere Tank hanno custodito verità scomode e leggende dimenticate.  
-    Gira la ruota, lascia che compia almeno cinque giri, e scopri quale segreto verrà svelato...
+    Gira la ruota e scopri quale segreto verrà svelato...
   </p>
 
   <div class="wheel-container">
@@ -137,23 +139,25 @@
       "Si dice che chi va a Brenna cambi spiritualmente, mentre chi rifiuta di andarci (i pischelli) non accetta nuove percezioni di realtà.",
       "Si dice che il 70% dell’acqua vicino al Salto sia sangue.",
       "Si dice che Brenna acquisì importanza grazie a due studenti, Riccardo e Fabio, che passavano ore a guardare il cielo e il fiume domandandosi perché l’amore fosse così incisivo.",
-      "Si dice che Duccio, appena arriva al fiume, sia costretto a tuffarsi: una tradizione millenaria dei suoi antenati che vive come una tortura. Spesso sogna di restare asciutto e fumare un cicchino in riva al fiume.",
+      "Si dice che Duccio, appena arriva al fiume, sia costretto a tuffarsi: una tradizione millenaria che vive come una tortura. Spesso sogna di restare asciutto e fumare un cicchino in riva al fiume.",
       "Si dice che Tank provi attrazioni sessuali strane per il cane femmina di Riccardo.",
       "Si dice che i cani di Riccardo di notte si trasformino in lupi che cacciano umani con più THC nel corpo, per donarlo al padrone.",
       "Si dice che una vecchia strega abbia maledetto Tank, condannandolo a non avere mai cani: per questo rosica guardando quelli di Riccardo e Fabio."
     ];
 
     let spinning = false;
+    let currentRotation = 0;
 
     function spin() {
       if (spinning) return;
       spinning = true;
 
-      const extraSpins = 5; // minimo 5 giri
+      const extraSpins = Math.floor(Math.random() * 4) + 4; // almeno 4 giri
       const stopAt = Math.floor(Math.random() * 12); // 12 settori
-      const degrees = 360 * extraSpins + (stopAt * 30) + 15;
+      const degrees = 360 * extraSpins + (stopAt * 30) + 15; // 30° per settore, +15 per centrare
 
-      wheel.style.transform = `rotate(${degrees}deg)`;
+      currentRotation += degrees;
+      wheel.style.transform = `rotate(${currentRotation}deg)`;
 
       setTimeout(() => {
         resultDiv.textContent = "🔮 Segreto rivelato: " + secrets[stopAt];
