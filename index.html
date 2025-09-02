@@ -70,8 +70,8 @@
       z-index: 5;
     }
 
-    /* Pulsante Misterioso in alto a sinistra */
-    .mystery-btn {
+    /* Pulsanti Misteriosi */
+    .mystery-btn, .double-mystery-btn {
       position: absolute;
       top: 25px;
       left: 25px;
@@ -87,10 +87,16 @@
       transition: 0.3s;
       z-index: 20;
     }
-    .mystery-btn:hover {
+    .mystery-btn:hover, .double-mystery-btn:hover {
       background: linear-gradient(135deg, #00eaff, #0072ff);
       color: #fff;
       box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
+    }
+
+    .double-mystery-btn {
+      display: none; /* nascosto all'inizio */
+      padding: 16px 26px; /* più grande */
+      font-size: 1.1em;
     }
 
     nav {
@@ -180,7 +186,9 @@
   <div id="particles"></div>
 
   <header>
-    <button class="mystery-btn">Pulsante Misterioso</button>
+    <button id="btn1" class="mystery-btn">Pulsante Misterioso</button>
+    <button id="btn2" class="double-mystery-btn">Pulsante Due Volte Misterioso</button>
+
     <h1>BRENNA BOYS</h1>
     <img src="images/sole.png" alt="Sole" class="sun">
     <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
@@ -237,7 +245,7 @@
     <p>© 2025 BRENNA BOYS 🌊 Estate infinita</p>
   </footer>
 
-  <!-- Script per generare particelle -->
+  <!-- Script per generare particelle e gestione pulsanti -->
   <script>
     const particlesContainer = document.getElementById("particles");
     for (let i = 0; i < 50; i++) {
@@ -250,6 +258,15 @@
       particle.style.animationDuration = (6 + Math.random() * 10) + "s";
       particlesContainer.appendChild(particle);
     }
+
+    // Gestione pulsanti misteriosi
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+
+    btn1.addEventListener("click", () => {
+      btn1.style.display = "none";
+      btn2.style.display = "inline-block";
+    });
   </script>
 
 </body>
