@@ -12,7 +12,6 @@
       background: #0d0d0d;
       color: #f0f0f0;
       overflow-x: hidden;
-      position: relative;
       min-height: 100vh;
     }
 
@@ -38,7 +37,7 @@
 
     header {
       text-align: center;
-      padding: 100px 20px 40px 20px;
+      padding: 100px 20px 60px 20px;
       position: relative;
     }
     header h1 {
@@ -48,6 +47,8 @@
       text-shadow: 0 0 20px #0072ff, 0 0 40px #00c6ff;
       margin: 0;
       animation: glowPulse 4s ease-in-out infinite;
+      position: relative;
+      z-index: 10;
     }
     header p {
       font-size: 1.2em;
@@ -57,6 +58,16 @@
     @keyframes glowPulse {
       0%,100% { text-shadow: 0 0 20px #0072ff, 0 0 40px #00c6ff; }
       50% { text-shadow: 0 0 30px #00eaff, 0 0 60px #00c6ff; }
+    }
+
+    /* Sole in alto a destra */
+    .sun {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      width: 180px;
+      height: 180px;
+      z-index: 5;
     }
 
     nav {
@@ -82,19 +93,21 @@
 
     section {
       padding: 70px 20px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
     }
     h2 {
       font-family: 'Orbitron', sans-serif;
       color: #00eaff;
-      font-size: 2em;
-      margin-bottom: 15px;
+      font-size: 1.6em;
+      margin-bottom: 10px;
       text-shadow: 0 0 12px #0072ff;
     }
 
     .spot {
-      margin-bottom: 70px;
       background: rgba(20,20,20,0.8);
       border-radius: 15px;
       border: 1px solid #0072ff;
@@ -109,7 +122,7 @@
     .spot img {
       display: block;
       width: 100%;
-      height: 320px;
+      height: 220px;
       object-fit: cover;
       border-bottom: 1px solid #0072ff;
       transition: transform 0.5s;
@@ -118,10 +131,10 @@
       transform: scale(1.05);
     }
     .spot p {
-      font-size: 1.1em;
-      line-height: 1.6em;
+      font-size: 1em;
+      line-height: 1.5em;
       color: #e0e0e0;
-      padding: 15px;
+      padding: 12px;
     }
 
     footer {
@@ -131,6 +144,7 @@
       padding: 25px;
       font-family: 'Orbitron', sans-serif;
       border-top: 1px solid #0072ff;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -141,6 +155,7 @@
 
   <header>
     <h1>BRENNA BOYS</h1>
+    <img src="images/sole.png" alt="Sole" class="sun">
     <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
   </header>
 
