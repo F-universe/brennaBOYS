@@ -32,11 +32,10 @@
       color: #ffeb3b;
       text-shadow: 0 0 10px #ffeb3b;
       margin-bottom: 30px;
-      max-width: 800px;
+      max-width: 900px;
       text-align: center;
     }
 
-    /* Contenitore della ruota */
     .wheel-container {
       position: relative;
       width: 420px;
@@ -66,7 +65,6 @@
       transition: transform 6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     }
 
-    /* Puntatore in alto */
     .pointer {
       position: absolute;
       top: -25px;
@@ -80,7 +78,6 @@
       filter: drop-shadow(0 0 10px #ffeb3b);
     }
 
-    /* Bottone spin */
     button {
       margin-top: 40px;
       padding: 15px 40px;
@@ -99,14 +96,13 @@
       transform: scale(1.05);
     }
 
-    /* Risultato */
     #result {
       margin-top: 25px;
-      font-size: 1.4em;
+      font-size: 1.3em;
       color: #ffeb3b;
       text-shadow: 0 0 15px #ffeb3b;
       text-align: center;
-      max-width: 600px;
+      max-width: 700px;
     }
   </style>
 </head>
@@ -115,8 +111,8 @@
   <h1>🎡 La Ruota dei Segreti 🎡</h1>
   <p>
     Questa è la <strong>Ruota dei Segreti dei Guerrieri</strong>.  
-    Solo i più coraggiosi osano girarla per scoprire i misteri nascosti di Riccardo, Duccio, Fabio e dell’Arciere Tank.  
-    Premi il pulsante e lascia che la sorte riveli un segreto...
+    Riccardo, Duccio, Fabio e l’arciere Tank hanno custodito verità scomode e leggende dimenticate.  
+    Gira la ruota, lascia che compia almeno cinque giri, e scopri quale segreto verrà svelato...
   </p>
 
   <div class="wheel-container">
@@ -133,18 +129,18 @@
     const resultDiv = document.getElementById("result");
 
     const secrets = [
-      "Riccardo una volta affrontò il fiume di notte, sfidando le correnti oscure.",
-      "Duccio conosce un passaggio segreto che porta al cuore nascosto della Baia.",
-      "Fabio ha costruito con le sue mani una zattera per navigare verso terre ignote.",
-      "Tank l’arciere non sbaglia mai un colpo: una freccia sua è ancora conficcata in un vecchio albero.",
-      "Riccardo vinse una gara di resistenza restando ore nell’acqua gelida.",
-      "Duccio scoprì una grotta dietro la cascata che solo lui conosce.",
-      "Fabio riuscì a scalare la rupe più alta, lasciando un segno inciso nella pietra.",
-      "Tank una volta colpì una bottiglia vuota posta a 100 metri di distanza.",
-      "Riccardo racconta di aver visto strane luci danzare sulla superficie del fiume.",
-      "Duccio ha trovato un antico simbolo inciso in una roccia vicino al Salto.",
-      "Fabio una notte seguì le stelle e trovò un nuovo sentiero lungo il fiume.",
-      "Tank ha un arco leggendario, costruito con legno sacro trovato nella foresta."
+      "Si dice che Riccardo amasse la sorella di Tank a tal punto da allenarsi fino a rischiare che i muscoli esplodessero. Ma lei amava i magri, e Riccardo cadde nell’oblio.",
+      "Si dice che Tank non sia un arciere fallito: ciò che nasconde è assai più grande e misterioso.",
+      "Il primo uomo a tuffarsi al Salto fu Duccio: da solo uccise tutti i pesci in quel momento e ne uscì vivo, diventando guerriero.",
+      "Si dice che Fabio conosca il misterioso segreto che sta dietro all’arciere Tank.",
+      "Si pensa che il Salto sia fatto di ossa degli uomini che hanno provato a saltare ma che sono stati uccisi.",
+      "Si dice che chi va a Brenna cambi spiritualmente, mentre chi rifiuta di andarci (i pischelli) non accetta nuove percezioni di realtà.",
+      "Si dice che il 70% dell’acqua vicino al Salto sia sangue.",
+      "Si dice che Brenna acquisì importanza grazie a due studenti, Riccardo e Fabio, che passavano ore a guardare il cielo e il fiume domandandosi perché l’amore fosse così incisivo.",
+      "Si dice che Duccio, appena arriva al fiume, sia costretto a tuffarsi: una tradizione millenaria dei suoi antenati che vive come una tortura. Spesso sogna di restare asciutto e fumare un cicchino in riva al fiume.",
+      "Si dice che Tank provi attrazioni sessuali strane per il cane femmina di Riccardo.",
+      "Si dice che i cani di Riccardo di notte si trasformino in lupi che cacciano umani con più THC nel corpo, per donarlo al padrone.",
+      "Si dice che una vecchia strega abbia maledetto Tank, condannandolo a non avere mai cani: per questo rosica guardando quelli di Riccardo e Fabio."
     ];
 
     let spinning = false;
@@ -153,16 +149,16 @@
       if (spinning) return;
       spinning = true;
 
-      const extraSpins = 5; // minimo 5 giri completi
+      const extraSpins = 5; // minimo 5 giri
       const stopAt = Math.floor(Math.random() * 12); // 12 settori
-      const degrees = 360 * extraSpins + (stopAt * 30) + 15; // 30° ogni settore, +15 per centrare
+      const degrees = 360 * extraSpins + (stopAt * 30) + 15;
 
       wheel.style.transform = `rotate(${degrees}deg)`;
 
       setTimeout(() => {
         resultDiv.textContent = "🔮 Segreto rivelato: " + secrets[stopAt];
         spinning = false;
-      }, 6000); // durata transizione
+      }, 6000);
     }
   </script>
 
