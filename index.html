@@ -70,6 +70,29 @@
       z-index: 5;
     }
 
+    /* Pulsante Misterioso in alto a sinistra */
+    .mystery-btn {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #111, #222, #111);
+      border: 1px solid #00eaff;
+      border-radius: 8px;
+      color: #00eaff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95em;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
+      transition: 0.3s;
+      z-index: 20;
+    }
+    .mystery-btn:hover {
+      background: linear-gradient(135deg, #00eaff, #0072ff);
+      color: #fff;
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
+    }
+
     nav {
       background: rgba(0,0,0,0.7);
       display: flex;
@@ -114,6 +137,8 @@
       box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
     }
     .spot:hover {
       transform: translateY(-5px);
@@ -135,6 +160,7 @@
       line-height: 1.5em;
       color: #e0e0e0;
       padding: 12px;
+      flex-grow: 1;
     }
 
     footer {
@@ -154,6 +180,7 @@
   <div id="particles"></div>
 
   <header>
+    <button class="mystery-btn">Pulsante Misterioso</button>
     <h1>BRENNA BOYS</h1>
     <img src="images/sole.png" alt="Sole" class="sun">
     <p>I luoghi leggendari del fiume — tra sole, avventura e libertà</p>
