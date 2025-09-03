@@ -16,13 +16,13 @@
       text-align: center;
       color: #00eaff;
       text-shadow: 0 0 20px #00c6ff, 0 0 40px #0072ff;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     #gameArea {
       position: relative;
       width: 100%;
-      height: 90vh;
+      height: 80vh;
       overflow: hidden;
       border-top: 2px solid #00eaff;
       border-bottom: 2px solid #00eaff;
@@ -53,14 +53,43 @@
       box-shadow: 0 0 20px rgba(255,100,0,0.8);
     }
 
-    #score {
+    /* Triangoli cadenti */
+    .triangle {
+      position: absolute;
+      top: -50px;
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid #ff4444;
+      filter: drop-shadow(0 0 10px #ff0000);
+    }
+
+    /* Bonus vita */
+    .life {
+      position: absolute;
+      top: -40px;
+      width: 30px;
+      height: 30px;
+      background: #00ff88;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #00ff88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #003322;
+    }
+
+    #score, #lives {
       position: absolute;
       top: 10px;
-      left: 20px;
       font-size: 1.2em;
-      color: #ffeb3b;
-      text-shadow: 0 0 10px #ff0;
+      text-shadow: 0 0 10px #000;
     }
+    #score { left: 20px; color: #ffeb3b; }
+    #lives { right: 20px; color: #ff4444; }
 
     #gameOver {
       display: none;
@@ -72,6 +101,35 @@
       color: #ff4444;
       text-shadow: 0 0 20px #ff0000;
     }
+
+    /* Controlli touch */
+    #controls {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      padding: 10px;
+    }
+    .ctrl-btn {
+      background: rgba(0,0,0,0.6);
+      border: 2px solid #00eaff;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      color: #00eaff;
+      font-size: 2em;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      line-height: 70px;
+      user-select: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0,200,255,0.5);
+    }
+    .ctrl-btn:active {
+      background: #00eaff;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -80,20 +138,33 @@
   <div id="gameArea">
     <div id="player"></div>
     <div id="score">Punteggio: 0</div>
+    <div id="lives">Vite: 3</div>
     <div id="gameOver">💥 GAME OVER 💥</div>
+
+    <!-- Controlli touch -->
+    <div id="controls">
+      <div id="leftBtn" class="ctrl-btn">⬅️</div>
+      <div id="rightBtn" class="ctrl-btn">➡️</div>
+    </div>
   </div>
 
   <script>
     const gameArea = document.getElementById("gameArea");
     const player = document.getElementById("player");
     const scoreDisplay = document.getElementById("score");
+    const livesDisplay = document.getElementById("lives");
     const gameOverText = document.getElementById("gameOver");
+
+    const leftBtn = document.getElementById("leftBtn");
+    const rightBtn = document.getElementById("rightBtn");
 
     let playerX = gameArea.clientWidth / 2 - 30;
     let score = 0;
+    let lives = 3;
     let gameRunning = true;
+    let fallSpeed = 5;
 
-    // Muovere il giocatore con le frecce
+    // Muovere il giocatore con tastiera
     document.addEventListener("keydown", (e) => {
       if (!gameRunning) return;
       if (e.key === "ArrowLeft" && playerX > 0) {
@@ -105,46 +176,81 @@
       player.style.left = playerX + "px";
     });
 
-    // Genera meteoriti casuali
-    function createMeteor() {
+    // Muovere con pulsanti touch
+    leftBtn.addEventListener("touchstart", () => movePlayer(-40));
+    rightBtn.addEventListener("touchstart", () => movePlayer(40));
+
+    function movePlayer(offset) {
+      if (!gameRunning) return;
+      playerX += offset;
+      if (playerX < 0) playerX = 0;
+      if (playerX > gameArea.clientWidth - player.offsetWidth) {
+        playerX = gameArea.clientWidth - player.offsetWidth;
+      }
+      player.style.left = playerX + "px";
+    }
+
+    // Genera oggetti cadenti
+    function createFallingObject() {
       if (!gameRunning) return;
 
-      const meteor = document.createElement("div");
-      meteor.classList.add("meteor");
-      meteor.style.left = Math.random() * (gameArea.clientWidth - 40) + "px";
-      gameArea.appendChild(meteor);
+      let obj;
+      const type = Math.random();
 
-      let meteorY = -50;
+      if (type < 0.7) {
+        obj = document.createElement("div");
+        obj.classList.add("meteor");
+      } else if (type < 0.9) {
+        obj = document.createElement("div");
+        obj.classList.add("triangle");
+      } else {
+        obj = document.createElement("div");
+        obj.classList.add("life");
+        obj.textContent = "+";
+      }
+
+      obj.style.left = Math.random() * (gameArea.clientWidth - 40) + "px";
+      gameArea.appendChild(obj);
+
+      let objY = -50;
       const fall = setInterval(() => {
         if (!gameRunning) {
           clearInterval(fall);
-          meteor.remove();
+          obj.remove();
           return;
         }
 
-        meteorY += 5;
-        meteor.style.top = meteorY + "px";
+        objY += fallSpeed;
+        obj.style.top = objY + "px";
 
-        // Collisione
         const playerRect = player.getBoundingClientRect();
-        const meteorRect = meteor.getBoundingClientRect();
+        const objRect = obj.getBoundingClientRect();
 
         if (
-          meteorRect.bottom > playerRect.top &&
-          meteorRect.top < playerRect.bottom &&
-          meteorRect.left < playerRect.right &&
-          meteorRect.right > playerRect.left
+          objRect.bottom > playerRect.top &&
+          objRect.top < playerRect.bottom &&
+          objRect.left < playerRect.right &&
+          objRect.right > playerRect.left
         ) {
-          gameRunning = false;
-          gameOverText.style.display = "block";
+          if (obj.classList.contains("life")) {
+            lives++;
+            livesDisplay.textContent = "Vite: " + lives;
+          } else {
+            lives--;
+            livesDisplay.textContent = "Vite: " + lives;
+            if (lives <= 0) {
+              gameRunning = false;
+              gameOverText.style.display = "block";
+            }
+          }
+          obj.remove();
           clearInterval(fall);
         }
 
-        // Se il meteorite esce dallo schermo
-        if (meteorY > gameArea.clientHeight) {
+        if (objY > gameArea.clientHeight) {
           clearInterval(fall);
-          meteor.remove();
-          if (gameRunning) {
+          obj.remove();
+          if (!obj.classList.contains("life") && gameRunning) {
             score++;
             scoreDisplay.textContent = "Punteggio: " + score;
           }
@@ -152,10 +258,15 @@
       }, 30);
     }
 
-    // Loop di meteoriti
+    // Loop oggetti
     setInterval(() => {
-      if (gameRunning) createMeteor();
+      if (gameRunning) createFallingObject();
     }, 1200);
+
+    // Aumenta velocità ogni 20 secondi
+    setInterval(() => {
+      if (gameRunning) fallSpeed *= 1.1;
+    }, 20000);
   </script>
 
 </body>
