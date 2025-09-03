@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Gioco - Schiva le Forme Futuristiche</title>
+  <title>Gioco - Schiva i Meteoriti Futuristici</title>
   <style>
     body {
       margin: 0;
@@ -57,23 +57,70 @@
 
     @keyframes glowPulse {
       from { box-shadow: 0 0 10px #00eaff, 0 0 20px #0072ff; }
-      to { box-shadow: 0 0 25px #00f5ff, 0 0 50px #00eaff; }
+      to { box-shadow: 0 0 20px #00eaff, 0 0 40px #00f5ff; }
     }
 
-    /* Oggetti cadenti generici */
+    /* Oggetti generici */
     .falling {
       position: absolute;
-      top: -100px;
-      animation: flicker 1s infinite alternate;
+      top: -40px;
+      width: 25px;
+      height: 25px;
+      background: #ff3300;
+      box-shadow: 0 0 12px #ff2200, 0 0 20px #ff4400;
     }
 
-    /* Effetti speciali */
-    .rotate { animation: spin 3s linear infinite, flicker 1s infinite alternate; }
-    .vibrate { animation: vibrate 0.3s infinite alternate, flicker 1s infinite alternate; }
+    /* Varianti di forme */
+    .circle {
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff6600, #aa0000);
+    }
+    .square {
+      background: linear-gradient(135deg, #00eaff, #0072ff);
+    }
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid #ff0055;
+      background: none;
+      box-shadow: none;
+      filter: drop-shadow(0 0 12px #ff0044);
+    }
+    .hexagon {
+      width: 30px;
+      height: 17px;
+      background: #ffcc00;
+      position: relative;
+      box-shadow: 0 0 12px #ffaa00, 0 0 20px #ffdd55;
+    }
+    .hexagon:before, .hexagon:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+    }
+    .hexagon:before {
+      bottom: 100%;
+      border-bottom: 8px solid #ffcc00;
+    }
+    .hexagon:after {
+      top: 100%;
+      width: 0;
+      border-top: 8px solid #ffcc00;
+    }
 
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    @keyframes vibrate { from { transform: translateX(-2px); } to { transform: translateX(2px); } }
-    @keyframes flicker { from { opacity: 0.7; } to { opacity: 1; } }
+    /* Rotazione animata */
+    .rotate {
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
     /* Bonus vita */
     .life {
@@ -83,7 +130,7 @@
       height: 20px;
       background: #00ff88;
       border-radius: 50%;
-      box-shadow: 0 0 15px #00ff88, 0 0 30px #00ffaa;
+      box-shadow: 0 0 12px #00ff88, 0 0 25px #00ffaa;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,11 +139,18 @@
       color: #003322;
       animation: pulseLife 1s infinite alternate;
     }
-    @keyframes pulseLife { from { transform: scale(1); } to { transform: scale(1.3); } }
+
+    @keyframes pulseLife {
+      from { transform: scale(1); }
+      to { transform: scale(1.3); }
+    }
 
     /* HUD */
     #score, #lives, #level {
-      position: absolute; top: 10px; font-size: 0.9em; text-shadow: 0 0 10px #000;
+      position: absolute;
+      top: 10px;
+      font-size: 0.9em;
+      text-shadow: 0 0 10px #000;
     }
     #score { left: 10px; color: #ffeb3b; }
     #lives { right: 10px; color: #ff4444; }
@@ -105,48 +159,69 @@
     #gameOver {
       display: none;
       position: absolute;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-size: 1.8em; color: #ff4444; text-shadow: 0 0 25px #ff0000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8em;
+      color: #ff4444;
+      text-shadow: 0 0 25px #ff0000;
     }
 
+    /* Overlay livelli */
     #levelUp {
       display: none;
       position: absolute;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-size: 2em; font-weight: bold; color: #00eaff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      font-weight: bold;
+      color: #00eaff;
       text-shadow: 0 0 20px #00c6ff, 0 0 40px #0072ff, 0 0 80px #00f5ff;
       animation: flicker 1s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { opacity: 0.8; }
+      to { opacity: 1; }
     }
 
     /* Controlli touch */
     #controls {
       position: fixed;
-      bottom: 60px;
+      bottom: 25px;
       left: 0;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 70px;
+      padding: 0 40px;
       z-index: 9999;
     }
     .ctrl-btn {
       background: rgba(0,0,0,0.6);
       border: 2px solid #00eaff;
       border-radius: 50%;
-      width: 40px; height: 40px;
-      color: #00eaff; font-size: 1.2em;
-      text-align: center; line-height: 40px;
-      user-select: none; cursor: pointer;
+      width: 40px;
+      height: 40px;
+      color: #00eaff;
+      font-size: 1.2em;
+      text-align: center;
+      line-height: 40px;
+      user-select: none;
+      cursor: pointer;
       box-shadow: 0 0 12px #00eaff, 0 0 25px #0072ff;
     }
-    .ctrl-btn:active { background: #00eaff; color: #fff; }
+    .ctrl-btn:active {
+      background: #00eaff;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
 
   <div id="background"></div>
 
-  <h1>🌌 Schiva le Forme Futuristiche 🌌</h1>
+  <h1>🌌 Schiva i Meteoriti Futuristici 🌌</h1>
   <div id="gameArea">
     <div id="player"></div>
     <div id="score">Punteggio: 0</div>
@@ -175,9 +250,11 @@
     const rightBtn = document.getElementById("rightBtn");
 
     let playerX = gameArea.clientWidth / 2 - 15;
-    let score = 0, lives = 3, level = 1;
+    let score = 0;
+    let lives = 3;
     let gameRunning = true;
     let fallSpeed = 4;
+    let level = 1;
 
     // Muovere con tastiera
     document.addEventListener("keydown", (e) => {
@@ -194,98 +271,104 @@
       if (!gameRunning) return;
       playerX += offset;
       if (playerX < 0) playerX = 0;
-      if (playerX > gameArea.clientWidth - player.offsetWidth)
+      if (playerX > gameArea.clientWidth - player.offsetWidth) {
         playerX = gameArea.clientWidth - player.offsetWidth;
-      player.style.left = playerX + "px";
-    }
-
-    // Genera forma casuale
-    function createRandomShape() {
-      const shapes = ["circle", "square", "triangle", "hexagon"];
-      const shape = shapes[Math.floor(Math.random() * shapes.length)];
-      const obj = document.createElement("div");
-
-      // Stile di base
-      obj.classList.add("falling");
-
-      // Assegna forma
-      if (shape === "circle") obj.classList.add("circle");
-      if (shape === "square") obj.classList.add("square");
-      if (shape === "triangle") obj.classList.add("triangle");
-      if (shape === "hexagon") obj.classList.add("hexagon");
-
-      // Colore casuale neon
-      const colors = ["#00eaff", "#ff00ff", "#00ff88", "#ffcc00", "#ff3300"];
-      const glow = colors[Math.floor(Math.random() * colors.length)];
-      obj.style.background = glow;
-      obj.style.boxShadow = `0 0 15px ${glow}, 0 0 30px ${glow}`;
-
-      // Dimensione random (max 7x player)
-      const maxSize = 28 * 7;
-      const size = 20 + Math.random() * (maxSize - 20);
-      if (shape !== "triangle" && shape !== "hexagon") {
-        obj.style.width = size + "px";
-        obj.style.height = size + "px";
       }
-
-      // Animazioni random
-      if (Math.random() < 0.5) obj.classList.add("rotate");
-      else obj.classList.add("vibrate");
-
-      return obj;
+      player.style.left = playerX + "px";
     }
 
     // Genera oggetti cadenti
     function createFallingObject() {
       if (!gameRunning) return;
-      let obj;
 
-      // A volte bonus vita
+      let obj;
+      const rand = Math.random();
+
+      if (rand < 0.25) {
+        obj = document.createElement("div");
+        obj.classList.add("falling", "circle");
+      } else if (rand < 0.5) {
+        obj = document.createElement("div");
+        obj.classList.add("falling", "square", "rotate");
+      } else if (rand < 0.75) {
+        obj = document.createElement("div");
+        obj.classList.add("triangle", "rotate");
+      } else {
+        obj = document.createElement("div");
+        obj.classList.add("hexagon", "rotate");
+      }
+
+      // Bonus vita random ogni tanto
       if (Math.random() < 0.05) {
         obj = document.createElement("div");
         obj.classList.add("life");
         obj.textContent = "+";
-      } else {
-        obj = createRandomShape();
       }
 
-      obj.style.left = Math.random() * (gameArea.clientWidth - 50) + "px";
+      obj.style.left = Math.random() * (gameArea.clientWidth - 30) + "px";
       gameArea.appendChild(obj);
 
-      let objY = -50;
+      let objY = -40;
       const fall = setInterval(() => {
-        if (!gameRunning) { clearInterval(fall); obj.remove(); return; }
+        if (!gameRunning) {
+          clearInterval(fall);
+          obj.remove();
+          return;
+        }
 
-        objY += fallSpeed; obj.style.top = objY + "px";
+        objY += fallSpeed;
+        obj.style.top = objY + "px";
 
         const playerRect = player.getBoundingClientRect();
         const objRect = obj.getBoundingClientRect();
 
-        if (objRect.bottom > playerRect.top && objRect.top < playerRect.bottom &&
-            objRect.left < playerRect.right && objRect.right > playerRect.left) {
+        if (
+          objRect.bottom > playerRect.top &&
+          objRect.top < playerRect.bottom &&
+          objRect.left < playerRect.right &&
+          objRect.right > playerRect.left
+        ) {
           if (obj.classList.contains("life")) {
-            lives++; livesDisplay.textContent = "Vite: " + lives;
+            lives++;
+            livesDisplay.textContent = "Vite: " + lives;
           } else {
-            lives--; livesDisplay.textContent = "Vite: " + lives;
-            if (lives <= 0) { gameRunning = false; gameOverText.style.display = "block"; }
+            lives--;
+            livesDisplay.textContent = "Vite: " + lives;
+            if (lives <= 0) {
+              gameRunning = false;
+              gameOverText.style.display = "block";
+            }
           }
-          obj.remove(); clearInterval(fall);
+          obj.remove();
+          clearInterval(fall);
         }
 
         if (objY > gameArea.clientHeight) {
-          clearInterval(fall); obj.remove();
+          clearInterval(fall);
+          obj.remove();
           if (!obj.classList.contains("life") && gameRunning) {
-            score++; scoreDisplay.textContent = "Punteggio: " + score;
+            score++;
+            scoreDisplay.textContent = "Punteggio: " + score;
           }
         }
       }, 30);
     }
 
-    setInterval(() => { if (gameRunning) createFallingObject(); }, 1200);
-    setInterval(() => { if (gameRunning) fallSpeed *= 1.1; }, 20000);
+    // Loop oggetti
+    setInterval(() => {
+      if (gameRunning) createFallingObject();
+    }, 1200);
+
+    // Aumenta velocità ogni 20 secondi
+    setInterval(() => {
+      if (gameRunning) fallSpeed *= 1.1;
+    }, 20000);
+
+    // Cambia livello ogni 30 secondi
     setInterval(() => {
       if (gameRunning) {
-        level++; fallSpeed *= 1.2;
+        level++;
+        fallSpeed *= 1.2;
         levelDisplay.textContent = "Livello: " + level;
         showLevelUp("LEVEL " + level);
       }
@@ -294,7 +377,9 @@
     function showLevelUp(text) {
       levelUpText.textContent = text;
       levelUpText.style.display = "block";
-      setTimeout(() => { levelUpText.style.display = "none"; }, 3000);
+      setTimeout(() => {
+        levelUpText.style.display = "none";
+      }, 3000);
     }
   </script>
 
