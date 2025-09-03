@@ -11,7 +11,7 @@
       background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
       color: #f0f0f0;
       overflow: hidden;
-      height: 100vh;
+      height: 100dvh; /* altezza dinamica vera su mobile */
     }
 
     h1 {
@@ -25,7 +25,7 @@
     #gameArea {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 100dvh; /* usa l’altezza dinamica reale */
       overflow: hidden;
       border-top: 2px solid #00eaff;
       border-bottom: 2px solid #00eaff;
@@ -34,7 +34,7 @@
     /* Giocatore */
     #player {
       position: absolute;
-      bottom: 80px; /* sopra i pulsanti */
+      bottom: 100px; /* più alto per non sparire dietro le frecce */
       left: 50%;
       transform: translateX(-50%);
       width: 60px;
@@ -111,10 +111,10 @@
       justify-content: center;
       gap: 50px;
       position: fixed;
-      bottom: 20px;
+      bottom: 20px; /* visibili sempre */
       left: 0;
       width: 100%;
-      z-index: 9999; /* sopra tutto */
+      z-index: 9999;
     }
     .ctrl-btn {
       background: rgba(0,0,0,0.6);
