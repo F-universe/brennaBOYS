@@ -70,11 +70,9 @@
       z-index: 5;
     }
 
-    /* Pulsanti Misteriosi */
-    .mystery-btn, .double-mystery-btn {
+    /* Pulsanti */
+    .mystery-btn, .double-mystery-btn, .insolito-btn {
       position: absolute;
-      top: 25px;
-      left: 25px;
       padding: 12px 20px;
       background: linear-gradient(135deg, #111, #222, #111);
       border: 1px solid #00eaff;
@@ -87,16 +85,28 @@
       transition: 0.3s;
       z-index: 20;
     }
-    .mystery-btn:hover, .double-mystery-btn:hover {
+    .mystery-btn:hover, .double-mystery-btn:hover, .insolito-btn:hover {
       background: linear-gradient(135deg, #00eaff, #0072ff);
       color: #fff;
       box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
     }
 
+    .mystery-btn {
+      top: 25px;
+      left: 25px;
+    }
+
     .double-mystery-btn {
+      top: 25px;
+      left: 25px;
       display: none; /* nascosto all'inizio */
-      padding: 16px 26px; /* più grande */
+      padding: 16px 26px;
       font-size: 1.1em;
+    }
+
+    .insolito-btn {
+      top: 70px;  /* leggermente sotto agli altri */
+      left: 25px;
     }
 
     nav {
@@ -188,6 +198,7 @@
   <header>
     <button id="btn1" class="mystery-btn">Pulsante Misterioso</button>
     <button id="btn2" class="double-mystery-btn">Pulsante Due Volte Misterioso</button>
+    <button id="btn3" class="insolito-btn">Pulsante Insolito</button>
 
     <h1>BRENNA BOYS</h1>
     <img src="images/sole.png" alt="Sole" class="sun">
@@ -245,7 +256,7 @@
     <p>© 2025 BRENNA BOYS 🌊 Estate infinita</p>
   </footer>
 
-  <!-- Script per generare particelle e gestione pulsanti -->
+  <!-- Script per particelle e pulsanti -->
   <script>
     const particlesContainer = document.getElementById("particles");
     for (let i = 0; i < 50; i++) {
@@ -259,9 +270,10 @@
       particlesContainer.appendChild(particle);
     }
 
-    // Gestione pulsanti misteriosi
+    // Pulsanti
     const btn1 = document.getElementById("btn1");
     const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
 
     btn1.addEventListener("click", () => {
       btn1.style.display = "none";
@@ -269,7 +281,11 @@
     });
 
     btn2.addEventListener("click", () => {
-      window.open("segreto.html", "_blank"); // apre una nuova pagina
+      window.open("segreto.html", "_blank");
+    });
+
+    btn3.addEventListener("click", () => {
+      window.location.href = "gioco.html";
     });
   </script>
 
