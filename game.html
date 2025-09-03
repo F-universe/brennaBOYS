@@ -14,7 +14,7 @@
       background: black;
     }
 
-    /* Background futuristico */
+    /* Background futuristico a griglia neon */
     #background {
       position: fixed;
       width: 100%;
@@ -23,20 +23,19 @@
       left: 0;
       background: repeating-linear-gradient(
         to bottom,
-        rgba(0, 200, 255, 0.1) 0px,
-        rgba(0, 200, 255, 0.1) 2px,
+        rgba(0, 200, 255, 0.08) 0px,
+        rgba(0, 200, 255, 0.08) 2px,
         transparent 2px,
         transparent 40px
       ),
       repeating-linear-gradient(
         to right,
-        rgba(0, 200, 255, 0.1) 0px,
-        rgba(0, 200, 255, 0.1) 2px,
+        rgba(0, 200, 255, 0.08) 0px,
+        rgba(0, 200, 255, 0.08) 2px,
         transparent 2px,
         transparent 40px
       ),
       radial-gradient(circle at center, #050510, #000);
-      background-size: cover;
       animation: moveGrid 10s linear infinite;
       z-index: -1;
     }
@@ -127,7 +126,8 @@
       to { transform: scale(1.3); }
     }
 
-    #score, #lives {
+    /* HUD */
+    #score, #lives, #level {
       position: absolute;
       top: 10px;
       font-size: 0.9em;
@@ -135,6 +135,7 @@
     }
     #score { left: 10px; color: #ffeb3b; }
     #lives { right: 10px; color: #ff4444; }
+    #level { left: 50%; transform: translateX(-50%); color: #00eaff; }
 
     #gameOver {
       display: none;
@@ -142,9 +143,28 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 1.6em;
+      font-size: 1.8em;
       color: #ff4444;
       text-shadow: 0 0 25px #ff0000;
+    }
+
+    /* Overlay livelli */
+    #levelUp {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 20px #00c6ff, 0 0 40px #0072ff, 0 0 80px #00f5ff;
+      animation: flicker 1s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { opacity: 0.8; }
+      to { opacity: 1; }
     }
 
     /* Controlli touch */
@@ -187,7 +207,9 @@
     <div id="player"></div>
     <div id="score">Punteggio: 0</div>
     <div id="lives">Vite: 3</div>
+    <div id="level">Livello: 1</div>
     <div id="gameOver">💥 GAME OVER 💥</div>
+    <div id="levelUp"></div>
   </div>
 
   <!-- Controlli touch -->
@@ -202,6 +224,8 @@
     const scoreDisplay = document.getElementById("score");
     const livesDisplay = document.getElementById("lives");
     const gameOverText = document.getElementById("gameOver");
+    const levelDisplay = document.getElementById("level");
+    const levelUpText = document.getElementById("levelUp");
 
     const leftBtn = document.getElementById("leftBtn");
     const rightBtn = document.getElementById("rightBtn");
@@ -211,6 +235,7 @@
     let lives = 3;
     let gameRunning = true;
     let fallSpeed = 4;
+    let level = 1;
 
     // Muovere con tastiera
     document.addEventListener("keydown", (e) => {
@@ -310,6 +335,24 @@
     setInterval(() => {
       if (gameRunning) fallSpeed *= 1.1;
     }, 20000);
+
+    // Cambia livello ogni 30 secondi
+    setInterval(() => {
+      if (gameRunning) {
+        level++;
+        fallSpeed *= 1.2;
+        levelDisplay.textContent = "Livello: " + level;
+        showLevelUp("LEVEL " + level);
+      }
+    }, 30000);
+
+    function showLevelUp(text) {
+      levelUpText.textContent = text;
+      levelUpText.style.display = "block";
+      setTimeout(() => {
+        levelUpText.style.display = "none";
+      }, 3000);
+    }
   </script>
 
 </body>
