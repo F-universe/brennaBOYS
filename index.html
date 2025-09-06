@@ -71,7 +71,7 @@
     }
 
     /* Pulsanti */
-    .mystery-btn, .double-mystery-btn, .insolito-btn {
+    .mystery-btn, .double-mystery-btn, .insolito-btn, .uncertain-btn {
       position: absolute;
       padding: 12px 20px;
       background: linear-gradient(135deg, #111, #222, #111);
@@ -85,7 +85,7 @@
       transition: 0.3s;
       z-index: 20;
     }
-    .mystery-btn:hover, .double-mystery-btn:hover, .insolito-btn:hover {
+    .mystery-btn:hover, .double-mystery-btn:hover, .insolito-btn:hover, .uncertain-btn:hover {
       background: linear-gradient(135deg, #00eaff, #0072ff);
       color: #fff;
       box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
@@ -99,13 +99,18 @@
     .double-mystery-btn {
       top: 25px;
       left: 25px;
-      display: none; /* nascosto all'inizio */
+      display: none;
       padding: 16px 26px;
       font-size: 1.1em;
     }
 
     .insolito-btn {
-      top: 70px;  /* leggermente sotto agli altri */
+      top: 70px;
+      left: 25px;
+    }
+
+    .uncertain-btn {
+      top: 115px;
       left: 25px;
     }
 
@@ -199,6 +204,7 @@
     <button id="btn1" class="mystery-btn">Pulsante Misterioso</button>
     <button id="btn2" class="double-mystery-btn">Pulsante Due Volte Misterioso</button>
     <button id="btn3" class="insolito-btn">Pulsante Insolito</button>
+    <button id="btn4" class="uncertain-btn">Pulsante Incerto</button>
 
     <h1>BRENNA BOYS</h1>
     <img src="images/sole.png" alt="Sole" class="sun">
@@ -274,6 +280,7 @@
     const btn1 = document.getElementById("btn1");
     const btn2 = document.getElementById("btn2");
     const btn3 = document.getElementById("btn3");
+    const btn4 = document.getElementById("btn4");
 
     btn1.addEventListener("click", () => {
       btn1.style.display = "none";
@@ -286,6 +293,10 @@
 
     btn3.addEventListener("click", () => {
       window.location.href = "game.html";
+    });
+
+    btn4.addEventListener("click", () => {
+      window.location.href = "snake.html";
     });
   </script>
 
